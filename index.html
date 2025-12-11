@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>João Mizeeski | Design e Dev</title>
+    <title>João Mizeeski | Product Designer & UX/UI</title>
+    <meta name="description" content="Product Designer especialista em UX/UI. Transformo problemas complexos em interfaces intuitivas e viáveis.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/phosphor-icons"></script>
 
@@ -22,33 +23,62 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* --- VARIÁVEIS DE COR (MODO CLARO - LIGHT) --- */
+        /* --- VARIÁVEIS DE COR --- */
         :root {
             --primary-color: #b74ae2;
             --primary-hover: #a336ce;
             --dark-text: #111827;
-            --light-text: #6B7280;
+            --light-text: #4B5563;
             --background: #FFFFFF;
             --card-bg: #FFFFFF;
-            --light-gray-bg: #F8F9FA;
+            --light-gray-bg: #F9FAFB;
             --border-color: #E5E7EB;
             --footer-bg: #111827;
+            --glass-bg: rgba(255, 255, 255, 0.8);
         }
 
-        /* --- VARIÁVEIS DE COR (MODO ESCURO - DARK) --- */
         html[data-theme='dark'] {
-            --primary-color: #b74ae2;
-            --primary-hover: #c863f0;
-            --dark-text: #e6edf3;
-            --light-text: #8b949e;
-            --background: #0d1117;
-            --card-bg: #161b22;
-            --light-gray-bg: #161b22;
-            --border-color: #30363d;
-            --footer-bg: #161b22;
+            --primary-color: #c06ce6;
+            --primary-hover: #d48ef2;
+            --dark-text: #F3F4F6;
+            --light-text: #9CA3AF;
+            --background: #0B0D11;
+            --card-bg: #151920;
+            --light-gray-bg: #111318;
+            --border-color: #2D333B;
+            --footer-bg: #050608;
+            --glass-bg: rgba(11, 13, 17, 0.8);
         }
 
-        /* --- ANIMAÇÕES DE ENTRADA DAS SEÇÕES --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            /* AJUSTE HEADER: Reduzi de 72px para 60px para acompanhar o header menor */
+            padding-top: 60px; 
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .btn {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Animação de Entrada */
         .fade-in-section {
             opacity: 0;
             transform: translateY(30px);
@@ -60,81 +90,29 @@
             transform: translateY(0);
         }
 
-        /* --- EFEITO DE LUZ DO CURSOR --- */
-        .cursor-light {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, hsla(283, 73%, 59%, 0.15) 0%, hsla(283, 73%, 59%, 0) 50%);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        html[data-theme='dark'] .cursor-light {
-            opacity: 1;
-        }
-
-        @media (pointer: coarse) {
-            .cursor-light {
-                display: none;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background);
-            color: var(--dark-text);
-            padding-top: 72px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .container {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-weight: 700;
-            color: var(--dark-text);
-            transition: color 0.3s ease;
-        }
-
         h2 {
             font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
         }
 
         .section-subtitle {
             text-align: center;
             color: var(--light-text);
-            font-size: 1.1rem;
-            margin-top: -3.5rem;
+            font-size: 1.125rem;
             margin-bottom: 4rem;
-            transition: color 0.3s ease;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* --- CABEÇALHO --- */
+        /* --- HEADER --- */
         header {
-            background-color: var(--background);
-            padding: 1rem 0;
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            /* AJUSTE HEADER: Reduzi de 1rem para 0.6rem */
+            padding: 0.6rem 0;
             position: fixed;
             top: 0;
             left: 0;
@@ -155,34 +133,26 @@
             font-weight: 700;
             color: var(--dark-text);
             text-decoration: none;
-        }
-
-        .logo img {
-            max-height: 50px;
+            letter-spacing: -0.03em;
         }
 
         .nav-wrapper {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
-        /* Navegação Desktop */
         .desktop-nav ul {
             list-style: none;
             display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        .desktop-nav ul li {
-            margin-left: 2rem;
+            gap: 2rem;
         }
 
         .desktop-nav ul li a {
             text-decoration: none;
             color: var(--light-text);
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
@@ -190,7 +160,7 @@
             color: var(--primary-color);
         }
 
-        /* --- TOGGLE SWITCH DE TEMA --- */
+        /* --- TOGGLE THEME --- */
         .theme-switch-wrapper {
             display: flex;
             align-items: center;
@@ -199,7 +169,7 @@
         .theme-switch {
             position: relative;
             display: inline-block;
-            width: 50px;
+            width: 48px;
             height: 26px;
         }
 
@@ -216,13 +186,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc;
+            background-color: var(--border-color);
             transition: .4s;
             border-radius: 26px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 4px;
+            padding: 0 5px;
         }
 
         .slider:before {
@@ -235,43 +205,24 @@
             background-color: white;
             transition: .4s;
             border-radius: 50%;
+            z-index: 2;
         }
 
         .slider i {
-            color: var(--primary-color);
+            color: var(--dark-text);
             font-size: 14px;
-            transition: opacity 0.4s;
-        }
-
-        .ph-sun {
-            opacity: 0;
-        }
-
-        .ph-moon {
-            opacity: 1;
+            z-index: 1;
         }
 
         input:checked+.slider {
             background-color: var(--primary-color);
         }
 
-        html[data-theme='dark'] .slider {
-            background-color: #30363d;
-        }
-
         input:checked+.slider:before {
-            transform: translateX(24px);
+            transform: translateX(22px);
         }
 
-        input:checked~.slider .ph-sun {
-            opacity: 1;
-        }
-
-        input:checked~.slider .ph-moon {
-            opacity: 0;
-        }
-
-        /* Navegação Mobile */
+        /* --- MOBILE NAV --- */
         .mobile-nav-toggle {
             display: none;
             background: none;
@@ -279,7 +230,6 @@
             color: var(--dark-text);
             font-size: 1.8rem;
             cursor: pointer;
-            transition: color 0.3s ease;
         }
 
         .mobile-nav {
@@ -292,7 +242,6 @@
             border-bottom: 1px solid var(--border-color);
             padding: 1rem;
             text-align: center;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .mobile-nav.open {
@@ -301,65 +250,63 @@
 
         .mobile-nav ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
         }
 
         .mobile-nav ul li {
-            padding: 0.75rem 0;
+            padding: 1rem 0;
         }
 
         .mobile-nav ul li a {
             text-decoration: none;
             color: var(--dark-text);
             font-weight: 500;
-            display: block;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
         }
 
-        .mobile-nav ul li a:hover {
-            color: var(--primary-color);
-        }
-
-        /* --- ESTILOS DOS BOTÕES --- */
+        /* --- BOTÕES --- */
         .btn {
-            padding: 14px 32px;
-            border-radius: 8px;
+            padding: 12px 28px;
+            border-radius: 6px;
             font-weight: 600;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
             transition: all 0.3s ease;
             font-size: 1rem;
+            cursor: pointer;
         }
 
         .btn-primary {
             background-color: var(--primary-color);
             color: #fff;
+            box-shadow: 0 4px 14px rgba(183, 74, 226, 0.3);
         }
 
         .btn-primary:hover {
             background-color: var(--primary-hover);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(183, 74, 226, 0.4);
         }
 
         .btn-secondary {
             background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+            color: var(--dark-text);
+            border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-            transform: translateY(-3px);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
         }
 
-        /* --- 1. HERO SECTION --- */
+        /* --- HERO --- */
         #hero {
             position: relative;
             overflow: hidden;
-            padding: 80px 0;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
             color: #fff;
         }
 
@@ -383,493 +330,295 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.6);
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4));
             z-index: -1;
         }
 
         #hero .container {
-            position: relative;
             z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
+            width: 100%;
         }
 
         .hero-text {
-            max-width: 550px;
+            max-width: 800px;
+        }
+
+        .tag-hero {
+            display: inline-block;
+            background: rgba(183, 74, 226, 0.2);
+            color: #dcbbf5;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(183, 74, 226, 0.4);
+            backdrop-filter: blur(4px);
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
             color: #fff;
+            letter-spacing: -0.03em;
         }
 
         .hero-text p {
-            font-size: 1.15rem;
-            color: #E5E7EB;
-            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            color: #D1D5DB;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            line-height: 1.7;
         }
 
         .hero-cta {
             display: flex;
             gap: 1rem;
-            margin-bottom: 2rem;
         }
 
-        .hero-trust-seal {
-            color: #E5E7EB;
-            font-weight: 500;
-        }
-
-        .hero-image {
-            max-width: 500px;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        /* --- CARROSSEL DE LOGOS --- */
+        /* --- LOGO CAROUSEL --- */
         #logo-carousel {
             background-color: var(--background);
-            padding: 60px 0;
-            overflow-x: hidden;
-            position: relative;
-            width: 100%;
-            transition: background-color 0.3s ease;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
         }
-
+        
         .logos-wrapper {
             position: relative;
             width: 100%;
-        }
-
-        .logos-wrapper::before,
-        .logos-wrapper::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 100px;
-            height: 100%;
-            z-index: 2;
-        }
-
-        .logos-wrapper::before {
-            left: 0;
-            background: linear-gradient(to left, rgba(255, 255, 255, 0), var(--background));
-        }
-
-        .logos-wrapper::after {
-            right: 0;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--background));
-        }
-
-        html[data-theme='dark'] .logos-wrapper::before {
-            background: linear-gradient(to left, hsla(215, 28%, 9%, 0), var(--background));
-        }
-
-        html[data-theme='dark'] .logos-wrapper::after {
-            background: linear-gradient(to right, hsla(215, 28%, 9%, 0), var(--background));
+            display: flex;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
 
         .logos-slide {
             display: flex;
             align-items: center;
-            animation: scroll 40s linear infinite;
+            animation: scroll 35s linear infinite; 
+            width: max-content;
         }
 
         @keyframes scroll {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .logos-slide img {
-            height: 40px;
-            width: auto;
-            margin: 0 45px;
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
+             /* AJUSTE LOGOS: Reduzi de 32px para 28px e forcei width auto/object-fit */
+             height: 28px;
+             width: auto;
+             object-fit: contain;
+             margin: 0 40px;
+             opacity: 0.5;
+             transition: opacity 0.3s;
+             filter: grayscale(100%);
         }
 
         .logos-slide:hover img {
-            opacity: 1;
+            opacity: 0.8;
+            filter: grayscale(0%);
         }
 
-        html[data-theme='dark'] .logos-slide img {
-            opacity: 0.7;
-            /* REGRA MODIFICADA: filter removido */
-        }
-
-        html[data-theme='dark'] .logos-slide:hover img {
-            opacity: 1;
-        }
-
-        /* --- 2. SERVIÇOS --- */
-        .services-grid {
+        /* --- SKILLS --- */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .service-card {
+        .skill-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
+            padding: 2.5rem;
+            border-radius: 12px;
             transition: all 0.3s ease;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        html[data-theme='dark'] .service-card:hover {
+        .skill-card:hover {
             border-color: var(--primary-color);
-            box-shadow: 0 10px 20px rgba(183, 74, 226, 0.1);
+            transform: translateY(-5px);
         }
 
-        .service-card i {
-            font-size: 3rem;
+        .skill-icon {
+            font-size: 2.5rem;
             color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card h3 {
             margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
             font-size: 1.25rem;
-            margin-bottom: 0.5rem;
         }
 
-        .service-card p {
+        .skill-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .skill-card ul li {
             color: var(--light-text);
-            line-height: 1.6;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
         }
 
-        /* --- 3. PORTFÓLIO --- */
+        .skill-card ul li i {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        /* --- PORTFOLIO --- */
         #portfolio {
             background-color: var(--light-gray-bg);
-            transition: background-color 0.3s ease;
         }
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
             margin-bottom: 3rem;
         }
 
         .project-card {
             background: var(--card-bg);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
         }
 
-        html[data-theme='dark'] .project-card:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-card img {
+        .project-thumb {
             width: 100%;
-            height: 220px;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-thumb img {
+            transform: scale(1.05);
         }
 
         .project-info {
-            padding: 1.5rem;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: var(--light-gray-bg);
+            color: var(--light-text);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            font-weight: 600;
         }
 
         .project-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
         }
 
         .project-info p {
             color: var(--light-text);
             font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .portfolio-cta {
-            text-align: center;
-        }
-
-        /* O resto do CSS permanece igual... */
-        .diferencial-list {
-            max-width: 800px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .diferencial-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .diferencial-item i {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-top: 5px;
-        }
-
-        .diferencial-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        #testimonials {
-            background-color: var(--light-gray-bg);
-            transition: background-color 0.3s ease;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card p {
-            color: var(--light-text);
-            font-style: italic;
             margin-bottom: 1.5rem;
-            line-height: 1.7;
+            flex-grow: 1;
         }
 
-        .testimonial-client {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .testimonial-client img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .client-info strong {
-            display: block;
-            color: var(--dark-text);
-        }
-
-        .client-info span {
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-
-        .process-timeline {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .process-timeline::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 5%;
-            width: 90%;
-            height: 2px;
-            background-color: var(--border-color);
-            z-index: -1;
-            transition: background-color 0.3s ease;
-        }
-
-        .process-step {
-            text-align: center;
-            width: 23%;
-        }
-
-        .process-step .step-number {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-color);
-            color: #fff;
-            border-radius: 50%;
+        .project-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            border: 4px solid var(--background);
-            margin-bottom: 1rem;
-            transition: border-color 0.3s ease;
+            gap: 0.5rem;
         }
 
-        .process-step h3 {
-            font-size: 1.1rem;
+        .project-link:hover {
+            text-decoration: underline;
         }
 
-        #pricing {
-            background-color: var(--light-gray-bg);
-            transition: background-color 0.3s ease;
-        }
-
-        .pricing-grid {
+        /* --- DIFERENCIAIS (Approach) --- */
+        .approach-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
         }
 
-        .pricing-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2.5rem 2rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card.featured {
-            border-color: var(--primary-color);
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(183, 74, 226, 0.1);
-        }
-
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-card .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .pricing-card .price span {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--light-text);
-        }
-
-        .pricing-card ul {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .pricing-card li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--light-text);
-            transition: border-color 0.3s ease, color 0.3s ease;
-        }
-
-        .pricing-card li:last-child {
-            border-bottom: none;
-        }
-
-        #final-cta {
-            background-color: var(--primary-color);
-            color: #fff;
-            text-align: center;
-            padding: 100px 0;
-        }
-
-        #final-cta h2 {
-            color: #fff;
-            font-size: 2.8rem;
-            margin-bottom: 2rem;
-        }
-
-        #final-cta .btn-secondary {
-            background: #fff;
-            color: var(--primary-color);
-            border-color: #fff;
-        }
-
-        #final-cta .btn-secondary:hover {
-            background: transparent;
-            color: #fff;
-        }
-
-        footer {
-            background-color: var(--footer-bg);
-            color: #fff;
-            padding: 60px 0 20px 0;
-            transition: background-color 0.3s ease;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .footer-col h4 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: var(--dark-text);
-        }
-
-        .footer-col p,
-        .footer-col a {
-            color: var(--light-text);
-            text-decoration: none;
-            line-height: 1.8;
-            transition: color 0.3s;
-        }
-
-        .footer-col a:hover {
-            color: var(--primary-color);
-        }
-
-        .social-icons {
+        .approach-item {
             display: flex;
             gap: 1.5rem;
         }
 
-        .social-icons a i {
-            font-size: 1.5rem;
-            color: var(--dark-text);
-            transition: color 0.3s ease;
+        .approach-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--border-color);
+            line-height: 1;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html[data-theme='dark'] .approach-number {
+             color: #2D333B;
         }
 
-        .social-icons a:hover i {
+        .approach-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .social-icons a {
+            color: var(--light-text);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+        
+        .social-icons a:hover {
             color: var(--primary-color);
         }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--light-text);
-            font-size: 0.9rem;
-            transition: border-color 0.3s ease;
-        }
-
+        
         .back-to-top-btn {
             position: fixed;
             bottom: 20px;
@@ -878,14 +627,14 @@
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background-color: var(--card-bg);
-            color: var(--primary-color);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
@@ -899,110 +648,17 @@
             transform: translateY(0);
         }
 
-        .back-to-top-btn:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
         /* --- RESPONSIVIDADE --- */
-        @media (max-width: 992px) {
-            h2 {
-                font-size: 2rem;
-            }
-
-            #hero .container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-text {
-                order: 2;
-            }
-
-            .hero-image {
-                order: 1;
-                margin-bottom: 2rem;
-            }
-
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero-cta {
-                justify-content: center;
-            }
-
-            .diferencial-list {
-                grid-template-columns: 1fr;
-            }
-
-            .process-timeline {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .process-timeline::before {
-                display: none;
-            }
-
-            .process-step {
-                width: 100%;
-            }
-        }
-
         @media (max-width: 768px) {
-            .desktop-nav {
-                display: none;
-            }
-
-            .mobile-nav-toggle {
-                display: block;
-            }
-
-            body {
-                padding-top: 72px;
-            }
-
-            .nav-wrapper {
-                gap: 1rem;
-            }
-
-            #hero {
-                padding-top: 60px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .footer-col.about {
-                grid-column: 1 / -1;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .social-icons {
-                justify-content: center;
-            }
+            .desktop-nav { display: none; }
+            .mobile-nav-toggle { display: block; }
+            
+            .hero-text h1 { font-size: 2.5rem; }
+            .approach-list { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            
+            .hero-cta { flex-direction: column; width: 100%; }
+            .hero-cta .btn { width: 100%; }
         }
     </style>
 </head>
@@ -1011,14 +667,15 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="#">Mizeeski</a>
+                <a href="#">Mizeeski<span style="color:var(--primary-color)">.</span></a>
             </div>
             <div class="nav-wrapper">
                 <nav class="desktop-nav">
                     <ul>
-                        <li><a href="#portfolio">Portfólio</a></li>
-                        <li><a href="#diferenciais">Meu Diferencial</a></li>
-                        <li><a href="#final-cta">Fale Comigo</a></li>
+                        <li><a href="#expertise">Expertise</a></li>
+                        <li><a href="#portfolio">Projetos</a></li>
+                        <li><a href="#approach">Diferencial</a></li>
+                        <li><a href="#contact">Contato</a></li>
                     </ul>
                 </nav>
                 <div class="theme-switch-wrapper">
@@ -1036,9 +693,10 @@
             </div>
             <nav class="mobile-nav">
                 <ul>
-                    <li><a href="#portfolio">Portfólio</a></li>
-                    <li><a href="#diferenciais">Meu Diferencial</a></li>
-                    <li><a href="#final-cta">Fale Comigo</a></li>
+                    <li><a href="#expertise">Expertise</a></li>
+                    <li><a href="#portfolio">Projetos</a></li>
+                    <li><a href="#approach">Diferencial</a></li>
+                    <li><a href="#contact">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -1048,308 +706,206 @@
         <section id="hero">
             <video autoplay muted loop playsinline id="hero-video">
                 <source src="anima.mp4" type="video/mp4">
-                Seu navegador não suporta a tag de vídeo.
             </video>
+            
             <div class="container">
                 <div class="hero-text">
-                    <h1>Transformo ideias em experiências digitais incríveis</h1>
-                    <p>Product Design, desenvolvimento web, UX/UI e prototipação de sistemas para empresas que querem se destacar.</p>
+                    <span class="tag-hero">Product Designer & UX Specialist</span>
+                    <h1>Estratégia que guia.<br>Design que engaja.</h1>
+                    <p>Unindo visão de produto, pesquisa com usuários e interfaces refinadas. Utilizo meu background técnico para garantir que cada pixel desenhado seja viável e escalável.</p>
                     <div class="hero-cta">
-                        <a href="#final-cta" class="btn btn-primary">Solicitar Orçamento</a>
-                        <a href="#portfolio" class="btn btn-secondary">Ver Portfólio</a>
+                        <a href="#portfolio" class="btn btn-primary">Ver Projetos</a>
+                        <a href="https://www.linkedin.com/in/joao-mizeeski" target="_blank" class="btn btn-secondary"><i class="ph-linkedin-logo"></i> LinkedIn</a>
                     </div>
-                    <span class="hero-trust-seal">+8 anos de experiência | Projetos para pequenas e grandes empresas |
-                        Empresas nacionais e do exterior</span>
                 </div>
-                <div class="hero-image"></div>
             </div>
         </section>
+
         <section id="logo-carousel">
             <div class="logos-wrapper">
                 <div class="logos-slide">
-                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png"
-                        data-src-light="nexxera-logo-preto.png" alt="Logo Nexxera" />
-                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png"
-                        data-src-light="concordia-preto.png" alt="Logo Concórdia" />
-                    <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png"
-                        alt="Logo Doppus" />
-                    <img src="american burrs.png" data-src-dark="american burrs.png" data-src-light="american-preto.png"
-                        alt="Logo American Burrs" />
-                    <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Logo Ageon" />
-                    <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Logo Goads" />
-                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png"
-                        alt="Logo Platafroma" />
+                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png" data-src-light="nexxera-logo-preto.png" alt="Nexxera">
+                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png" data-src-light="concordia-preto.png" alt="Concórdia">
+                    <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png" alt="Doppus">
+                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png" alt="Multidrop" style="width: 100px;">
+                    <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Ageon">
+                    <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Goads">
+                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png" alt="Plataforma 3/4">
 
-                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png"
-                        data-src-light="nexxera-logo-preto.png" alt="Logo Nexxera" />
-                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png"
-                        data-src-light="concordia-preto.png" alt="Logo Concórdia" />
-                    <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png"
-                        alt="Logo Doppus" />
-                    <img src="american burrs.png" data-src-dark="american burrs.png" data-src-light="american-preto.png"
-                        alt="Logo American Burrs" />
-                    <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Logo Ageon" />
-                    <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Logo Goads" />
-                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png"
-                        alt="Logo Platafroma" />
+                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png" data-src-light="nexxera-logo-preto.png" alt="Nexxera">
+                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png" data-src-light="concordia-preto.png" alt="Concórdia">
+                    <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png" alt="Doppus">
+                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png" alt="Multidrop" style="width: 100px;">
+                    <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Ageon">
+                    <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Goads">
+                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png" alt="Plataforma 3/4">
+                    
+                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png" data-src-light="nexxera-logo-preto.png" alt="Nexxera">
+                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png" data-src-light="concordia-preto.png" alt="Concórdia">
+                    <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png" alt="Doppus">
+                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png" alt="Multidrop" style="width: 100px;">
+                    <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Ageon">
+                    <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Goads">
+                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png" alt="Plataforma 3/4">
                 </div>
             </div>
         </section>
-        <section id="services">
+
+        <section id="expertise">
             <div class="container">
-                <h2>O que eu faço</h2>
-                <p class="section-subtitle">Soluções completas para transformar sua presença digital.</p>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="ph-figma-logo"></i>
-                        <h3>UX/UI Design</h3>
-                        <p>Interfaces que unem estética e usabilidade para encantar seus usuários.</p>
+                <h2>Minha Expertise</h2>
+                <p class="section-subtitle">Foco total na experiência do usuário e na qualidade da interface.</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="ph-figma-logo"></i></div>
+                        <h3>Product & UX Design</h3>
+                        <p>Do discovery ao handoff, criando soluções centradas no usuário e alinhadas ao negócio.</p>
+                        <ul>
+                            <li><i class="ph-check"></i> User Research & Personas</li>
+                            <li><i class="ph-check"></i> Wireframing & Prototyping</li>
+                            <li><i class="ph-check"></i> Testes de Usabilidade</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <i class="ph-code"></i>
-                        <h3>Desenvolvimento Web</h3>
-                        <p>Sites e sistemas rápidos, responsivos e otimizados para os melhores resultados.</p>
+
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="ph-layout"></i></div>
+                        <h3>UI & Design Systems</h3>
+                        <p>Construção de interfaces consistentes, acessíveis e bibliotecas de componentes escaláveis.</p>
+                        <ul>
+                            <li><i class="ph-check"></i> Atomic Design</li>
+                            <li><i class="ph-check"></i> Design Tokens</li>
+                            <li><i class="ph-check"></i> Documentação Técnica</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <i class="ph ph-layout"></i>
-                        <h3>Prototipação</h3>
-                        <p>Valide ideias e fluxos de navegação antes de investir no desenvolvimento completo.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="ph-chart-line-up"></i>
-                        <h3>Otimização de Conversão</h3>
-                        <p>Análise e melhoria contínua para transformar mais visitantes em clientes.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="ph-palette"></i>
-                        <h3>Identidades Visuais</h3>
-                        <p>Criação de logotipos, paletas de cores e guias de estilo que definem a essência da sua marca.
-                        </p>
-                    </div>
-                    <div class="service-card">
-                        <i class="ph-chalkboard-teacher"></i>
-                        <h3>Consultoria e Aulas de Design</h3>
-                        <p>Aulas particulares e consultoria para aprimorar suas habilidades em design e usabilidade.</p>
+
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="ph-code"></i></div>
+                        <h3>Technical Feasibility</h3>
+                        <p>Conhecimento em código para garantir que o design seja implementável e performático.</p>
+                        <ul>
+                            <li><i class="ph-check"></i> HTML/CSS Awareness</li>
+                            <li><i class="ph-check"></i> Webflow (No-code)</li>
+                            <li><i class="ph-check"></i> Dev Handoff Otimizado</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
+
         <section id="portfolio">
             <div class="container">
-                <h2>Projetos em Destaque</h2>
-                <p class="section-subtitle">Conheça alguns dos trabalhos que me orgulho de ter feito.</p>
+                <h2>Projetos Selecionados</h2>
+                <p class="section-subtitle">Casos de estudo onde design e estratégia geraram resultados.</p>
+                
                 <div class="portfolio-grid">
                     <div class="project-card">
-                        <a
-                            href="https://www.behance.net/gallery/232158761/Site-loja-(e-commerce)-Shopify-com-layout-Exclusivo"><img
-                                src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/6a31f5232158761.6896757e74bc3.png"
-                                alt="E-commerce de moda"></a>
+                        <div class="project-thumb">
+                            <a href="https://www.behance.net/gallery/232158761/Site-loja-(e-commerce)-Shopify-com-layout-Exclusivo" target="_blank">
+                                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/6a31f5232158761.6896757e74bc3.png" alt="E-commerce Fashion">
+                            </a>
+                        </div>
                         <div class="project-info">
-                            <h3>E-commerce de moda</h3>
-                            <p>Uma loja de roupas femininas criada dentro da shopify com jornada de usuário, design
-                                responsivo e desenvolvimetno personalizado.</p>
+                            <div class="project-tags">
+                                <span class="tag">UI Design</span>
+                                <span class="tag">E-commerce</span>
+                            </div>
+                            <h3>Shopify Fashion Experience</h3>
+                            <p>Criação de uma experiência de compra fluida e responsiva, focada em aumentar o ticket médio e reduzir o abandono de carrinho.</p>
+                            <a href="https://www.behance.net/gallery/232158761/Site-loja-(e-commerce)-Shopify-com-layout-Exclusivo" target="_blank" class="project-link">Ver Case <i class="ph-arrow-right"></i></a>
                         </div>
                     </div>
+
                     <div class="project-card">
-                        <a href="https://www.behance.net/gallery/230073607/NexxBot-Assistente-Inteligente-Interno"><img
-                                src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/5ddd18230073607.686ffce177299.png"
-                                alt="Assistente interno de IA"></a>
+                        <div class="project-thumb">
+                            <a href="https://www.behance.net/gallery/230073607/NexxBot-Assistente-Inteligente-Interno" target="_blank">
+                                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/5ddd18230073607.686ffce177299.png" alt="NexxBot IA">
+                            </a>
+                        </div>
                         <div class="project-info">
-                            <h3>Assistente interno de IA</h3>
-                            <p>Projeto para facilitar o acesso às informações internas da empresa por meio de um hub
-                                digital centralizado com um assistente de IA humanizado.</p>
+                            <div class="project-tags">
+                                <span class="tag">Product Design</span>
+                                <span class="tag">AI Interface</span>
+                            </div>
+                            <h3>NexxBot AI Assistant</h3>
+                            <p>Design de um hub centralizado de inteligência artificial corporativa, facilitando o acesso à informação interna através de UX conversacional.</p>
+                            <a href="https://www.behance.net/gallery/230073607/NexxBot-Assistente-Inteligente-Interno" target="_blank" class="project-link">Ver Case <i class="ph-arrow-right"></i></a>
                         </div>
                     </div>
+
                     <div class="project-card">
-                        <a href="https://www.behance.net/gallery/232382655/One-Security-Otimizacao-de-Loja-Virtual-UX-DEV"
-                            target="_blank">
-                            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/bf4d30232382655.689b479a1578b.png"
-                                alt="Otimização de Loja Virtual">
-                        </a>
+                        <div class="project-thumb">
+                            <a href="https://www.behance.net/gallery/232382655/One-Security-Otimizacao-de-Loja-Virtual-UX-DEV" target="_blank">
+                                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/bf4d30232382655.689b479a1578b.png" alt="One Security">
+                            </a>
+                        </div>
                         <div class="project-info">
-                            <h3>Otimização de Loja Virtual</h3>
-                            <p>Objetivo de otimizar e qualificar a loja virtual da One Security, melhorando a
-                                experiência do usuário, aumentando a taxa de conversão e garantindo um catálogo com mais
-                                de 1200 produtos padronizados e confiáveis.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-cta">
-                    <a href="https://www.behance.net/joovimizeesk?locale=pt_BR" target="_blank"
-                        class="btn btn-primary">Ver todos os projetos no Behance</a>
-                </div>
-            </div>
-        </section>
-        <section id="diferenciais">
-            <div class="container">
-                <h2>Por que escolher trabalhar comigo?</h2>
-                <p class="section-subtitle">Minha abordagem une o melhor do design e da tecnologia para garantir o
-                    sucesso do seu projeto.</p>
-                <div class="diferencial-list">
-                    <div class="diferencial-item">
-                        <i class="ph-target"></i>
-                        <div>
-                            <h3>Foco em Resultado</h3>
-                            <p>Cada decisão de design e cada linha de código são pensadas para atingir seus objetivos de
-                                negócio.</p>
-                        </div>
-                    </div>
-                    <div class="diferencial-item">
-                        <i class="ph-package"></i>
-                        <div>
-                            <h3>Design e Código no mesmo pacote</h3>
-                            <p>Comunicação fluida e consistência total do início ao fim, sem precisar gerenciar
-                                múltiplos profissionais.</p>
-                        </div>
-                    </div>
-                    <div class="diferencial-item">
-                        <i class="ph-arrows-clockwise"></i>
-                        <div>
-                            <h3>Processo Ágil e Transparente</h3>
-                            <p>Você acompanha cada etapa do projeto e participa das decisões, garantindo previsibilidade
-                                e controle.</p>
-                        </div>
-                    </div>
-                    <div class="diferencial-item">
-                        <i class="ph-buildings"></i>
-                        <div>
-                            <h3>Experiência com Empresas e Startups</h3>
-                            <p>Flexibilidade para me adaptar às necessidades de grandes corporações e à agilidade das
-                                startups.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="testimonials">
-            <div class="container">
-                <h2>O que meus clientes e parceiros dizem</h2>
-                <p class="section-subtitle">A satisfação de quem confia no meu trabalho é meu maior indicador de
-                    sucesso.</p>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <p>"O João é um profissional versátil e ágil, com uma interpretação apurada dos briefings. Ele
-                            se destaca não só pelas habilidades de designer, mas também pelo conhecimento em
-                            programação, o que o torna um talento multifuncional capaz de executar projetos complexos do
-                            zero."</p>
-                        <div class="testimonial-client">
-                            <img src="https://media.licdn.com/dms/image/v2/D4D03AQEDviGdCOk1BA/profile-displayphoto-shrink_400_400/B4DZayT0etHsAg-/0/1746748262737?e=2147483647&v=beta&t=eniosU5D2jsGHREF_6KWhThfepsTUzFH75-GFTxnf-c"
-                                alt="Foto de Diogo Bessa">
-                            <div class="client-info">
-                                <strong>Diogo Bessa</strong>
-                                <span>Ex-Assessor de Comunicação, Governo de SC</span>
+                            <div class="project-tags">
+                                <span class="tag">UX Audit</span>
+                                <span class="tag">Conversion Rate</span>
                             </div>
+                            <h3>One Security Otimização</h3>
+                            <p>Redesign focado em performance e arquitetura da informação para um catálogo de mais de 1.200 produtos.</p>
+                            <a href="https://www.behance.net/gallery/232382655/One-Security-Otimizacao-de-Loja-Virtual-UX-DEV" target="_blank" class="project-link">Ver Case <i class="ph-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <p>"Trabalhar com o João é sinônimo de resultado. Ele tem a rara habilidade de unir um design de
-                            alta qualidade com o desenvolvimento focado em conversão. As páginas que ele criou para
-                            nossas campanhas não só ficaram incríveis, mas melhoraram diretamente nossas métricas."</p>
-                        <div class="testimonial-client">
-                            <img src="https://media.licdn.com/dms/image/v2/D4D03AQE7v8SX5B9V6g/profile-displayphoto-shrink_400_400/B4DZboqcuCIAAg-/0/1747660165375?e=2147483647&v=beta&t=tKlDlvvD4nvXVZmLFV0xnFWkarWNBO6nYXgI6iIsFYM"
-                                alt="Foto de Pedro Quint">
-                            <div class="client-info">
-                                <strong>Pedro Quint</strong>
-                                <span>CEO, GOAds Performance</span>
-                            </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="https://www.behance.net/joovimizeesk" target="_blank" class="btn btn-secondary">Ver Portfólio Completo no Behance</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="approach">
+            <div class="container">
+                <h2>Por que me contratar?</h2>
+                <p class="section-subtitle">Mais do que telas bonitas, entrego consistência técnica e visão de negócio.</p>
+                
+                <div class="approach-list">
+                    <div class="approach-item">
+                        <div class="approach-number">01</div>
+                        <div class="approach-content">
+                            <h3>Handoff Perfeito</h3>
+                            <p>Compreendo a lógica de front-end. Entrego arquivos organizados, com grids, tokens e documentação que facilitam a vida dos desenvolvedores.</p>
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <p>"Profissional fora da curva, talento de sobra! A atenção aos detalhes, tanto no design da
-                            experiência do usuário quanto no código final, é impressionante. Ele entrega um produto
-                            final refinado e que realmente funciona."</p>
-                        <div class="testimonial-client">
-                            <img src="https://media.licdn.com/dms/image/v2/C4D03AQECNuEojuIY0Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1661521314107?e=2147483647&v=beta&t=couQwD1Q4LifHp-aQfQDwumC7xBfJNF5EPaE4a2rTGs"
-                                alt="Foto de Leonardo Batista">
-                            <div class="client-info">
-                                <strong>Leonardo Batista</strong>
-                                <span>Analista de Dados e Performance, Engie Brasil</span>
-                            </div>
+                    
+                    <div class="approach-item">
+                        <div class="approach-number">02</div>
+                        <div class="approach-content">
+                            <h3>Visão Sistêmica</h3>
+                            <p>Não projeto telas isoladas. Penso em componentes reutilizáveis e estados variados para garantir que o produto escale com consistência.</p>
+                        </div>
+                    </div>
+
+                    <div class="approach-item">
+                        <div class="approach-number">03</div>
+                        <div class="approach-content">
+                            <h3>Data-Driven Design</h3>
+                            <p>Minhas decisões visuais são embasadas em pesquisa e métricas de conversão, não apenas em "achismo" ou tendências passageiras.</p>
+                        </div>
+                    </div>
+
+                    <div class="approach-item">
+                        <div class="approach-number">04</div>
+                        <div class="approach-content">
+                            <h3>Experiência Internacional</h3>
+                            <p>Atuação com produtos para o mercado europeu (DACH), entendendo diferentes contextos culturais e padrões de usabilidade globais.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="process">
+
+        <section id="contact" style="background-color: var(--primary-color); color: white; text-align: center;">
             <div class="container">
-                <h2>Como funciona</h2>
-                <p class="section-subtitle">Um processo simples e estruturado para tirar sua ideia do papel.</p>
-                <div class="process-timeline">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <h3>Briefing e Imersão</h3>
-                        <p>Entendemos suas metas e o objetivo que você quer alcançar.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <h3>Proposta e Cronograma</h3>
-                        <p>Você recebe uma proposta detalhada com escopo, prazos e valores.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <h3>Design e Prototipação</h3>
-                        <p>Crio as interfaces, protótipos navegáveis ou mvps para validação.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <h3>Desenvolvimento e Entrega</h3>
-                        <p>Codifico o projeto com as melhores práticas e entrego tudo pronto para você.</p>
-                    </div>
+                <h2 style="color: white;">Vamos construir o próximo nível?</h2>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Disponível para oportunidades como Product Designer (Remoto).</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="mailto:joaovitor.mizeeski@gmail.com" class="btn" style="background: white; color: var(--primary-color);">Enviar E-mail</a>
+                    <a href="https://www.linkedin.com/in/joao-mizeeski/" target="_blank" class="btn" style="border: 2px solid white; color: white;">Conectar no LinkedIn</a>
                 </div>
-            </div>
-        </section>
-        <section id="pricing">
-            <div class="container">
-                <h2>Pacotes e Valores</h2>
-                <p class="section-subtitle">Investimentos flexíveis para atender diferentes necessidades.</p>
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <h3>Básico</h3>
-                        <div class="price">R$ X.XXX <span>a partir de</span></div>
-                        <p>Ideal para landing pages e sites institucionais simples.</p>
-                        <ul>
-                            <li>Até 5 páginas</li>
-                            <li>Design Responsivo</li>
-                            <li>Direcionamento de contato</li>
-                            <li>Otimização SEO Básica</li>
-                        </ul>
-                        <a href="https://whatsa.me/5548984591763/?t=Tenho%interesse%no%plano%basico!"
-                            class="btn btn-secondary">Quero este</a>
-                    </div>
-                    <div class="pricing-card featured">
-                        <h3>Avançado</h3>
-                        <div class="price">R$ Y.YYY <span>a partir de</span></div>
-                        <p>Para projetos mais complexos, com mais funcionalidades.</p>
-                        <ul>
-                            <li>Páginas Ilimitadas</li>
-                            <li>UX/UI Design Completo</li>
-                            <li>Integração com CMS</li>
-                            <li>Blog e SEO Avançado</li>
-                        </ul>
-                        <a href="https://whatsa.me/5548984591763/?t=Tenho%interesse%no%plano%avançado!"
-                            class="btn btn-primary">Quero este</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>Personalizado</h3>
-                        <div class="price">Sob Consulta</div>
-                        <p>Para sistemas web, SaaS, e-commerce e demandas específicas.</p>
-                        <ul>
-                            <li>Escopo 100% customizado</li>
-                            <li>Design System</li>
-                            <li>Testes de Usabilidade</li>
-                            <li>Suporte Contínuo</li>
-                        </ul>
-                        <a href="https://whatsa.me/5548984591763/?t=Tenho%interesse%no%plano%personalizado!"
-                            class="btn btn-secondary">Consultar</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="final-cta">
-            <div class="container">
-                <h2>Vamos criar algo incrível juntos?</h2>
-                <a href="https://whatsa.me/5548984591763/?t=Gostaria%20de%20conhecer%20seu%20trabalho!" target="_blank"
-                    class="btn btn-secondary">Fale comigo agora</a>
             </div>
         </section>
     </main>
@@ -1357,39 +913,26 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col about">
-                    <h4>João Mizeeski</h4>
-                    <p>Designer e Desenvolvedor Web focado em criar experiências digitais que geram resultados para
-                        empresas e startups.</p>
-                </div>
                 <div class="footer-col">
-                    <h4>Links Rápidos</h4>
-                    <p><a href="#services">Serviços</a></p>
-                    <p><a href="#portfolio">Portfólio</a></p>
-                    <p><a href="#final-cta">Contato</a></p>
+                    <h4>João Mizeeski</h4>
+                    <p>Product Designer focado em criar ferramentas digitais que facilitam a vida das pessoas e geram valor para negócios.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Contato</h4>
-                    <p><a href="mailto:joaovitor.mizeeski@gmail.com">joaovitor.mizeeski@gmail.com</a></p>
-                    <p><a href="https://whatsa.me/5548984591763/?t=Gostaria%20de%20conhecer%20seu%20trabalho!">+55 (48)
-                            98459-1763</a></p>
-                    <p>Florianópolis, SC</p>
+                    <p><a href="mailto:joaovitor.mizeeski@gmail.com" style="color: var(--light-text); text-decoration: none;">joaovitor.mizeeski@gmail.com</a></p>
+                    <p style="color: var(--light-text);">Florianópolis, SC - Brasil</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Redes Sociais</h4>
+                    <h4>Social</h4>
                     <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/joao-mizeeski/" target="_blank"><i
-                                class="ph-linkedin-logo"></i></a>
-                        <a href="https://www.behance.net/joovimizeesk?locale=pt_BR" target="_blank"><i
-                                class="ph-behance-logo"></i></a>
+                        <a href="https://www.linkedin.com/in/joao-mizeeski/" target="_blank"><i class="ph-linkedin-logo"></i></a>
+                        <a href="https://www.behance.net/joovimizeesk" target="_blank"><i class="ph-behance-logo"></i></a>
                         <a href="https://github.com/JvMizeeski" target="_blank"><i class="ph-github-logo"></i></a>
-                        <a href="https://www.instagram.com/v0njao/" target="_blank"><i
-                                class="ph-instagram-logo"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 João Vitor Mizeeski. Todos os direitos reservados.</p>
+            <div class="footer-bottom" style="text-align: center; color: var(--light-text); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; 2025 João Vitor Mizeeski.</p>
             </div>
         </div>
         <button id="back-to-top-btn" class="back-to-top-btn" title="Voltar ao topo">
@@ -1398,7 +941,7 @@
     </footer>
 
     <script>
-        // Script do Menu Mobile (original)
+        // Script do Menu Mobile
         const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
         const mobileNav = document.querySelector('.mobile-nav');
         mobileNavToggle.addEventListener('click', () => {
@@ -1410,11 +953,9 @@
                 mobileNav.classList.remove('open');
             });
         });
-    </script>
 
-    <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- LÓGICA GERAL E DE ANIMAÇÕES ---
+            // Animações de Scroll
             const sections = document.querySelectorAll('section');
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
             const observer = new IntersectionObserver((entries, observer) => {
@@ -1430,16 +971,7 @@
                 observer.observe(section);
             });
 
-            const lightElement = document.createElement('div');
-            lightElement.classList.add('cursor-light');
-            document.body.appendChild(lightElement);
-            window.addEventListener('mousemove', (e) => {
-                requestAnimationFrame(() => {
-                    lightElement.style.left = `${e.clientX}px`;
-                    lightElement.style.top = `${e.clientY}px`;
-                });
-            });
-
+            // Back to Top
             const backToTopButton = document.getElementById('back-to-top-btn');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 300) {
@@ -1452,7 +984,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // --- LÓGICA DE TROCA DE TEMA E LOGOS ---
+            // Dark/Light Theme Logic
             const themeToggle = document.getElementById('theme-toggle');
             const docHtml = document.documentElement;
 
@@ -1463,6 +995,7 @@
                     const lightSrc = logo.dataset.srcLight;
                     if (theme === 'light' && lightSrc) {
                         logo.src = lightSrc;
+                        logo.style.filter = "none";
                     } else if (darkSrc) {
                         logo.src = darkSrc;
                     }
@@ -1492,8 +1025,7 @@
             updateLogoSources(initialTheme);
         });
     </script>
-    <script
-        src="https://whatsa.me/bt-min.js?link=https://whatsa.me/5548984591763/?t=Gostaria%20de%20conhecer%20seu%20trabalho!"></script>
+    
+    <script src="https://whatsa.me/bt-min.js?link=https://whatsa.me/5548984591763/?t=Gostaria%20de%20conhecer%20seu%20trabalho!"></script>
 </body>
-
 </html>
