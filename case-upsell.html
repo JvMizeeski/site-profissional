@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Funnel | Case Study - João Mizeeski</title>
+    <meta name="description" content="Case study sobre a criação de um construtor visual de funis de vendas (Upsell/Downsell).">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <style>
+        /* --- REUTILIZANDO VARIÁVEIS DO SEU SITE --- */
+        :root {
+            --primary-color: #b74ae2;
+            --primary-hover: #a336ce;
+            --dark-text: #111827;
+            --light-text: #4B5563;
+            --background: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --light-gray-bg: #F9FAFB;
+            --border-color: #E5E7EB;
+            --footer-bg: #111827;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --success-color: #10B981;
+            --warning-color: #F59E0B;
+            --upsell-color: #059669;  /* Verde para Upsell */
+            --downsell-color: #D97706; /* Laranja para Downsell */
+        }
+
+        html[data-theme='dark'] {
+            --primary-color: #c06ce6;
+            --primary-hover: #d48ef2;
+            --dark-text: #F3F4F6;
+            --light-text: #9CA3AF;
+            --background: #0B0D11;
+            --card-bg: #151920;
+            --light-gray-bg: #111318;
+            --border-color: #2D333B;
+            --footer-bg: #050608;
+            --glass-bg: rgba(11, 13, 17, 0.8);
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            padding-top: 60px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, .btn { font-family: 'Poppins', sans-serif; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .container-header {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+
+        /* --- CASE STUDY STYLES --- */
+        .case-hero {
+            padding: 80px 0 60px;
+            text-align: left;
+        }
+
+        .case-tag {
+            display: inline-block;
+            background: rgba(183, 74, 226, 0.15);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(183, 74, 226, 0.3);
+        }
+
+        .case-hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .case-hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        /* Meta Grid */
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+        }
+
+        .meta-item h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-item p {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        /* Section Styles */
+        .case-section { padding: 60px 0; }
+        .case-section h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--dark-text); }
+        .case-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--dark-text); }
+        .case-section p { margin-bottom: 1.5rem; color: var(--light-text); font-size: 1.05rem; }
+
+        /* Strategy Cards */
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .strategy-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .strategy-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Comparison Table */
+        .pricing-vis {
+            background: var(--light-gray-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            overflow-x: auto;
+        }
+
+        .pricing-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        .pricing-table th, .pricing-table td {
+            text-align: left; padding: 1rem; border-bottom: 1px solid var(--border-color); color: var(--light-text);
+        }
+        .pricing-table th { color: var(--dark-text); font-weight: 600; }
+        .pricing-table .highlight { color: var(--primary-color); font-weight: 700; }
+
+        /* --- IMAGES (Wide & Full Width) --- */
+        .mockup-container {
+            width: 100%;
+            margin: 3rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+        }
+
+        .mockup-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* List Styling */
+        .styled-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--light-text);
+            display: flex;
+            gap: 1rem;
+        }
+        .styled-list li i { color: var(--primary-color); margin-top: 4px; }
+
+        /* --- THEME TOGGLE --- */
+        .theme-switch-wrapper { display: flex; align-items: center; }
+        .theme-switch { position: relative; display: inline-block; width: 48px; height: 26px; }
+        .theme-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border-color); transition: .4s; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; padding: 0 5px; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; z-index: 2; }
+        .slider i { color: var(--dark-text); font-size: 14px; z-index: 1; }
+        input:checked+.slider { background-color: var(--primary-color); }
+        input:checked+.slider:before { transform: translateX(22px); }
+
+        /* Back Button */
+        .back-nav { margin-bottom: 2rem; }
+        .back-nav a {
+            color: var(--light-text); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500; transition: color 0.2s;
+        }
+        .back-nav a:hover { color: var(--primary-color); }
+
+        .next-project { text-align: center; padding: 80px 0; background-color: var(--light-gray-bg); margin-top: 80px; }
+
+        @media (max-width: 768px) {
+            .case-hero h1 { font-size: 2rem; }
+            .pricing-vis { padding: 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container-header">
+            <div class="logo">
+                <a href="index.html">Mizeeski<span style="color:var(--primary-color)">.</span></a>
+            </div>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <div class="slider">
+                        <i class="ph-sun"></i>
+                        <i class="ph-moon"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="case-hero">
+            <div class="container">
+                <div class="back-nav">
+                    <a href="index.html"><i class="ph-arrow-left"></i> Voltar para Home</a>
+                </div>
+                
+                <span class="case-tag">SaaS / Checkout</span>
+                <h1>Funis de Venda: Maximizando LTV com UX Visual</h1>
+                <p class="subtitle">Como transformamos a complexidade de árvores de decisão e lógica "se/então" em uma interface de fluxo visual intuitiva para infoprodutores aumentarem o ticket médio.</p>
+
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Role</h4>
+                        <p>UX Researcher & UI Designer</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Contexto</h4>
+                        <p>Feature Discovery & Prototipagem</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Objetivo</h4>
+                        <p>Aumentar LTV e AOV</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Ferramentas</h4>
+                        <p>Figma, Benchmarking</p>
+                    </div>
+                </div>
+
+                <!-- HERO IMAGE: O FLUXO COMPLETO -->
+                <div class="mockup-container">
+                    <img src="cases/fluxo-upsell.png" alt="Fluxo completo de Upsell e Downsell">
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTEXTO E DESAFIO -->
+        <section class="case-section">
+            <div class="container">
+                <h2>O Desafio: Reduzindo a Carga Cognitiva</h2>
+                <p>O objetivo do negócio era claro: permitir que produtores oferecessem produtos adicionais (Upsell) ou alternativos (Downsell) imediatamente após a compra principal, utilizando a tecnologia "One-Click Buy".</p>
+                <p>No entanto, a lógica de configuração de funis é inerentemente complexa. Ela envolve condicionais ("Se comprou X, oferte Y; Se recusou Y, oferte Z") que, se apresentadas em listas lineares ou formulários tradicionais, geram alta carga cognitiva e erros de configuração.</p>
+                
+                <h3>A Restrição Técnica</h3>
+                <p>Um desafio adicional definido no Discovery foi que a plataforma <strong>não forneceria um construtor de páginas (Page Builder)</strong> nesta versão. O sistema precisava focar na lógica do funil, exigindo que o usuário integrasse URLs externas de forma transparente.</p>
+            </div>
+        </section>
+
+        <!-- BENCHMARKING E ESTRATÉGIA -->
+        <section class="case-section" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2>Discovery & Benchmarking</h2>
+                <p>Analisamos os principais players do mercado (Ablefy, Hotmart, Digistore24) para identificar padrões mentais já estabelecidos.</p>
+
+                <div class="pricing-vis">
+                    <h3>Matriz de Decisão de UX</h3>
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Funcionalidade</th>
+                                <th>Ablefy (Referência Visual)</th>
+                                <th>Hotmart (Referência Linear)</th>
+                                <th class="highlight">Nossa Solução</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Interface Principal</td>
+                                <td>Diagrama de Fluxo</td>
+                                <td>Lista de Etapas</td>
+                                <td class="highlight">Diagrama de Fluxo (Canvas Infinito)</td>
+                            </tr>
+                            <tr>
+                                <td>Lógica de Recusa</td>
+                                <td>Ramificação Visual</td>
+                                <td>Configuração na Etapa</td>
+                                <td class="highlight">Ramificação Visual (Caminhos Verde/Vermelho)</td>
+                            </tr>
+                            <tr>
+                                <td>Feedback/Analytics</td>
+                                <td>Integrado ao Nó</td>
+                                <td>Relatório Separado</td>
+                                <td class="highlight">Métricas Integradas no Card</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <h4><i class="ph-graph"></i> Modelo Mental de Grafo</h4>
+                        <p>Adotamos a topologia visual da Ablefy. O usuário "desenha" o caminho do cliente, conectando nós de decisão. Isso torna tangível a jornada abstrata.</p>
+                    </div>
+                    <div class="strategy-card">
+                        <h4><i class="ph-plugs-connected"></i> Integração "No-Code"</h4>
+                        <p>Como não temos Page Builder, o foco da UX foi na clareza do script. Geramos snippets prontos para copiar e colar, facilitando a vida de quem usa Elementor ou WordPress.</p>
+                    </div>
+                </div>
+
+                <!-- IMAGE: LISTAGEM VAZIA (Blank Slate problem solved next) -->
+                <div class="mockup-container">
+                    <img src="cases/lista-funis.png" alt="Tela inicial de listagem de funis">
+                </div>
+            </div>
+        </section>
+
+        <!-- A SOLUÇÃO: O EDITOR VISUAL -->
+        <section class="case-section">
+            <div class="container">
+                <h2>O Editor de Flow (The Core)</h2>
+                <p>O coração da funcionalidade é o Editor Visual. Projetamos um sistema de nós (Nodes) onde cada etapa é um card interativo. A distinção visual é crítica aqui:</p>
+                <ul class="styled-list">
+                    <li><i class="ph-check-circle" style="color: var(--success-color)"></i> <strong>Caminho de Sucesso (Verde):</strong> O cliente aceitou a oferta. Leva a um novo Upsell ou à página de obrigado.</li>
+                    <li><i class="ph-x-circle" style="color: var(--downsell-color)"></i> <strong>Caminho de Recusa (Laranja):</strong> O cliente disse "não". Oportunidade perfeita para um Downsell (oferta mais barata) para recuperar a venda.</li>
+                </ul>
+
+                <h3>Onboarding do Fluxo</h3>
+                <p>Para evitar a "síndrome da tela em branco", o fluxo inicia guiando o usuário a definir o gatilho principal antes de soltá-lo no canvas infinito.</p>
+                
+                <div class="mockup-container">
+                    <img src="cases/criacao-funil.png" alt="Modal de criação do novo funil">
+                </div>
+
+                <h3>Estrutura do Nó (Card)</h3>
+                <p>Cada card no canvas não é apenas um botão de configuração, é um <strong>dashboard em miniatura</strong>. Decidimos incluir as métricas (Visitantes, Vendas, Conversão) diretamente no design do nó, permitindo que o produtor diagnostique gargalos no funil sem sair da tela de edição.</p>
+
+                <div class="mockup-container">
+                    <img src="cases/node-inicial.png" alt="Visualização do nó de Upsell inicial no canvas">
+                </div>
+            </div>
+        </section>
+
+        <!-- CONFIGURAÇÃO DETALHADA -->
+        <section class="case-section" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2>Configuração Contextual (Sidebar)</h2>
+                <p>Para não perder o contexto visual do fluxo, optamos por usar um <strong>Drawer (Sidebar)</strong> para as configurações detalhadas, em vez de modais que bloqueiam a tela ou redirecionamentos de página.</p>
+                <p>Ao clicar em um nó, o painel desliza da direita permitindo selecionar o produto, definir o preço da oferta e, crucialmente, inserir a URL da página de vendas externa.</p>
+
+                <div class="mockup-container">
+                    <img src="cases/sidebar.png" alt="Sidebar de configuração do produto e oferta">
+                </div>
+                
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <h4><i class="ph-shield-check"></i> Segurança Transacional</h4>
+                        <p>A interface alerta claramente sobre a necessidade de manter parâmetros de URL na página externa, garantindo que o token de segurança da sessão persista para o "One-Click Buy".</p>
+                    </div>
+                    <div class="strategy-card">
+                        <h4><i class="ph-eye"></i> Validação Visual</h4>
+                        <p>Feedback imediato de sucesso (Check verde) no card assim que a configuração é salva corretamente.</p>
+                    </div>
+                </div>
+
+                <div class="mockup-container">
+                    <img src="cases/feedback-verificado.png" alt="Feedback de produto verificado no fluxo">
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTADOS -->
+        <section class="case-section">
+            <div class="container">
+                <h2>Conclusão</h2>
+                <p>O módulo de Upsell e Downsell entrega poder estratégico nas mãos dos infoprodutores. Transformamos um processo técnico e linear em uma experiência visual de "construção de jornada", onde a lógica de vendas se torna tangível e gerenciável. A decisão de separar a lógica do funil do design da página (Externo) permitiu um MVP robusto e agnóstico a plataformas de construção de sites.</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="next-project">
+        <div class="container">
+            <h3>Gostou da abordagem estratégica?</h3>
+            <p style="margin-bottom: 2rem; color: var(--light-text);">Podemos aplicar essa mesma clareza aos fluxos do seu produto.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="index.html#portfolio" class="btn btn-secondary">Ver outros projetos</a>
+                <a href="mailto:joaovitor.mizeeski@gmail.com" class="btn btn-primary">Entrar em contato</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="text-align: center; color: var(--light-text); font-size: 0.85rem; padding-top: 2rem;">
+                <p>&copy; 2025 João Vitor Mizeeski.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica de tema Dark/Light
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const docHtml = document.documentElement;
+
+            function switchTheme() {
+                const currentTheme = docHtml.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                docHtml.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+
+            themeToggle.addEventListener('change', switchTheme);
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                docHtml.setAttribute('data-theme', 'light');
+                themeToggle.checked = false;
+            } else {
+                docHtml.setAttribute('data-theme', 'dark');
+                themeToggle.checked = true;
+            }
+        });
+    </script>
+</body>
+</html>
