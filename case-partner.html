@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner | Case Study - João Mizeeski</title>
+    <meta name="description" content="Case study de Product Design para plataforma educacional no mercado DACH.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <style>
+        /* --- REUTILIZANDO VARIÁVEIS DO SEU SITE --- */
+        :root {
+            --primary-color: #b74ae2;
+            --primary-hover: #a336ce;
+            --dark-text: #111827;
+            --light-text: #4B5563;
+            --background: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --light-gray-bg: #F9FAFB;
+            --border-color: #E5E7EB;
+            --footer-bg: #111827;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --success-color: #10B981;
+            --warning-color: #F59E0B;
+        }
+
+        html[data-theme='dark'] {
+            --primary-color: #c06ce6;
+            --primary-hover: #d48ef2;
+            --dark-text: #F3F4F6;
+            --light-text: #9CA3AF;
+            --background: #0B0D11;
+            --card-bg: #151920;
+            --light-gray-bg: #111318;
+            --border-color: #2D333B;
+            --footer-bg: #050608;
+            --glass-bg: rgba(11, 13, 17, 0.8);
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            padding-top: 60px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, .btn { font-family: 'Poppins', sans-serif; }
+
+        .container {
+            max-width: 900px; /* Mais estreito para leitura de texto (artigo) */
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .container-wide {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- HEADER (Reutilizado) --- */
+        header {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header .container-header {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+
+        /* --- CASE STUDY STYLES --- */
+        
+        /* Hero do Case */
+        .case-hero {
+            padding: 80px 0 60px;
+            text-align: left;
+        }
+
+        .case-tag {
+            display: inline-block;
+            background: rgba(183, 74, 226, 0.15);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(183, 74, 226, 0.3);
+        }
+
+        .case-hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .case-hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        /* Grid de Metadados */
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+        }
+
+        .meta-item h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-item p {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        /* Conteúdo Geral */
+        .case-section {
+            padding: 60px 0;
+        }
+
+        .case-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .case-section h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .case-section p {
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+            font-size: 1.05rem;
+        }
+
+        /* Listas Estilizadas */
+        .styled-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .styled-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--light-text);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .styled-list li i {
+            color: var(--primary-color);
+            margin-top: 4px;
+        }
+
+        /* Cards de Estratégia */
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .strategy-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .strategy-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Tabela de Preços (Visualização) */
+        .pricing-vis {
+            background: var(--light-gray-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            overflow-x: auto;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .pricing-table th, .pricing-table td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--light-text);
+        }
+
+        .pricing-table th {
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        .pricing-table .highlight {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Container de Imagens - AJUSTADO */
+        .mockup-container {
+            width: 100%;
+            margin: 3rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+        }
+
+        /* Regra para garantir que todas as imagens preencham 100% */
+        .mockup-container img {
+            width: 100%;
+            height: auto;
+            display: block; /* Remove espaços indesejados abaixo da imagem */
+        }
+
+        .mockup-placeholder {
+            width: 100%;
+            height: 400px; /* Altura padrão apenas para placeholder */
+            background-color: var(--light-gray-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            border: 2px dashed var(--border-color);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .mockup-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .mockup-placeholder span {
+            font-size: 0.9rem;
+            font-family: monospace;
+            background: rgba(0,0,0,0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        /* Flow Steps */
+        .flow-steps {
+            position: relative;
+            margin: 3rem 0;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .step-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .step-item::before {
+            content: '';
+            position: absolute;
+            left: -2.6rem;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid var(--background);
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- THEME TOGGLE (Reutilizado) --- */
+        .theme-switch-wrapper { display: flex; align-items: center; }
+        .theme-switch { position: relative; display: inline-block; width: 48px; height: 26px; }
+        .theme-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border-color); transition: .4s; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; padding: 0 5px; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; z-index: 2; }
+        .slider i { color: var(--dark-text); font-size: 14px; z-index: 1; }
+        input:checked+.slider { background-color: var(--primary-color); }
+        input:checked+.slider:before { transform: translateX(22px); }
+
+        /* Botão Voltar */
+        .back-nav {
+            margin-bottom: 2rem;
+        }
+        .back-nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .back-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer simples para o case */
+        .next-project {
+            text-align: center;
+            padding: 80px 0;
+            background-color: var(--light-gray-bg);
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .case-hero h1 { font-size: 2rem; }
+            .pricing-vis { padding: 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container-header">
+            <div class="logo">
+                <a href="index.html">Mizeeski<span style="color:var(--primary-color)">.</span></a>
+            </div>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <div class="slider">
+                        <i class="ph-sun"></i>
+                        <i class="ph-moon"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="case-hero">
+            <div class="container">
+                <div class="back-nav">
+                    <a href="index.html"><i class="ph-arrow-left"></i> Voltar para Home</a>
+                </div>
+                
+                <span class="case-tag">SaaS / EdTech</span>
+                <h1>Partner: Escalando educação através de integrações B2B</h1>
+                <p class="subtitle">Desenvolvimento do ecossistema "Partner Mode" para o mercado DACH, permitindo que plataformas externas comercializem cursos de forma nativa via API.</p>
+
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Role</h4>
+                        <p>Product Designer</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Contexto</h4>
+                        <p>Discovery, UX Strategy & UI</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Mercado</h4>
+                        <p>Europa (DACH)</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Stack Visual</h4>
+                        <p>Figma, PrimeVue</p>
+                    </div>
+                </div>
+
+                <!-- MOCKUP: CAPA DO PROJETO -->
+                <div class="mockup-container">
+                    <!-- Substituir este bloco pela imagem final -->
+                    <img src="cases/capa-do-case.webp" alt="Capa do case">
+                </div>
+            </div>
+        </section>
+
+        <!-- O DESAFIO -->
+        <section class="case-section">
+            <div class="container">
+                <h2>O Desafio</h2>
+                <p>A plataforma precisava expandir sua atuação no mercado europeu criando um modelo "Partner". O objetivo era permitir que outras plataformas pudessem embedar o player e o sistema de cursos da plataforma dentro de seus próprios ambientes, removendo a necessidade do aluno final fazer múltiplos logins.</p>
+                <p>Meu papel foi estruturar todo o Discovery, desde a estratégia de precificação para competir com players estabelecidos (como Memberspot) até a definição dos fluxos de integração técnica (API/Webhooks) traduzidos em uma interface amigável.</p>
+            </div>
+        </section>
+
+        <!-- ESTRATÉGIA DE NEGÓCIO -->
+        <section class="case-section" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2>Business Design & Pricing</h2>
+                <p>Para penetrar um mercado competitivo, a estratégia de design precisava estar alinhada à estratégia comercial. Analisamos o principal concorrente, <strong>Memberspot</strong>, e desenhamos uma arquitetura de planos agressiva: oferecer <strong>5x mais valor</strong> pelo mesmo preço psicológico.</p>
+
+                <div class="pricing-vis">
+                    <h3>Comparativo de Entrada</h3>
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Concorrente (Starter)</th>
+                                <th class="highlight">Plataforma (Partner Start)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Preço</td>
+                                <td>€39 / mês</td>
+                                <td class="highlight">€39 / mês</td>
+                            </tr>
+                            <tr>
+                                <td>Limite de Alunos</td>
+                                <td>100 alunos</td>
+                                <td class="highlight">500 alunos (5x)</td>
+                            </tr>
+                            <tr>
+                                <td>Taxa de Transação</td>
+                                <td>Variável</td>
+                                <td class="highlight">0% (Venda externa)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <h4><i class="ph-users"></i> Estrutura de Planos</h4>
+                        <p>Defini 4 tiers (Sandbox, Start, Grow, Scale) baseados em gatilhos de upgrade claros: qualidade de vídeo (720p vs 4K), White-Label e acesso a Webhooks prioritários.</p>
+                    </div>
+                    <div class="strategy-card">
+                        <h4><i class="ph-currency-circle-dollar"></i> Gatilho Financeiro</h4>
+                        <p>Destaque visual para o plano anual com 20% de desconto, aumentando o LTV (Lifetime Value) e garantindo fluxo de caixa antecipado.</p>
+                    </div>
+                </div>
+
+                <!-- MOCKUP: TELA DE PLANOS -->
+                <div class="mockup-container">
+                    <img src="cases/selecao-planos.png" alt="Tela de seleção dos planos">
+                </div>
+            </div>
+        </section>
+
+        <!-- UX & FLUXOS -->
+        <section class="case-section">
+            <div class="container">
+                <h2>Otimizando o Onboarding (Lock-in)</h2>
+                <p>Identificamos que deixar o usuário navegar livremente antes de configurar o produto gerava churn. Desenvolvi um novo fluxo de "Lock-in", similar ao ClickUp, onde a navegação lateral é removida até que as etapas cruciais sejam concluídas.</p>
+
+                <div class="flow-steps">
+                    <div class="step-item">
+                        <div class="step-title">1. Cadastro & Perfil</div>
+                        <p>Coleta de dados básicos e identificação do produtor ("dar a cara").</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">2. Configuração do Produto</div>
+                        <p>Criação obrigatória da primeira área de membros e curso antes de ver o dashboard.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">3. Seleção de Plano (Gatilho)</div>
+                        <p>A liberação das chaves de API e Webhooks só ocorre após a confirmação do plano, garantindo a qualificação do lead.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">4. Central de Integração</div>
+                        <p>Acesso ao <code>Client ID</code>, <code>Client Secret</code> e documentação técnica para implementação.</p>
+                    </div>
+                </div>
+
+                <!-- MOCKUP: FLUXO ONBOARDING -->
+                <div class="mockup-container">
+                    <img src="cases/sequencia.png" alt="Sequência de 3 telas do fluxo">
+                </div>
+            </div>
+        </section>
+
+        <!-- UI DESIGN & HANDOFF -->
+        <section class="case-section" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2>Interface & Viabilidade Técnica</h2>
+                <p>Para garantir velocidade de desenvolvimento e consistência, utilizei componentes da biblioteca <strong>PrimeVue</strong> como base, aplicando o Design System da plataforma por cima. Isso reduziu drasticamente o tempo de handoff para os desenvolvedores.</p>
+
+                <h3>Central de Integrações</h3>
+                <p>A tela mais crítica do sistema. O Partner precisa gerar chaves de API e configurar Webhooks com clareza técnica, mas sem intimidação visual.</p>
+                
+                <!-- MOCKUP: TELA DE INTEGRAÇÕES -->
+                <div class="mockup-container">
+                    <img src="cases/api.png" alt="Imagem do dashboard na parte de armazenamento">
+                </div>
+
+                <h3>Embed & Player</h3>
+                <p>O resultado final para o aluno: um player limpo, white-label, integrado dentro da plataforma do parceiro sem fricção de login.</p>
+
+                <!-- MOCKUP: VISÃO DO ALUNO -->
+                <div class="mockup-container">
+                    <img src="cases/final.png" alt="Embed testado na prática">
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTADOS / CONCLUSÃO -->
+        <section class="case-section">
+            <div class="container">
+                <h2>Conclusão</h2>
+                <p>O projeto Partner transformou uma necessidade complexa de integração técnica em um fluxo de produto auto-serviço (PLG). Ao alinhar as regras de negócio (preço e planos) com uma interface que guia o usuário (onboarding focado), criamos um ambiente onde desenvolvedores e empreendedores conseguem escalar suas operações educacionais com autonomia.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="next-project">
+        <div class="container">
+            <h3>Gostou deste case?</h3>
+            <p style="margin-bottom: 2rem; color: var(--light-text);">Vamos conversar sobre como posso ajudar no seu próximo produto.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="index.html#portfolio" class="btn btn-secondary">Ver outros projetos</a>
+                <a href="mailto:joaovitor.mizeeski@gmail.com" class="btn btn-primary">Entrar em contato</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="text-align: center; color: var(--light-text); font-size: 0.85rem; padding-top: 2rem;">
+                <p>&copy; 2025 João Vitor Mizeeski.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mesma lógica de tema do site principal
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const docHtml = document.documentElement;
+
+            function switchTheme() {
+                const currentTheme = docHtml.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                docHtml.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+
+            themeToggle.addEventListener('change', switchTheme);
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                docHtml.setAttribute('data-theme', 'light');
+                themeToggle.checked = false;
+            } else {
+                docHtml.setAttribute('data-theme', 'dark');
+                themeToggle.checked = true;
+            }
+        });
+    </script>
+</body>
+</html>
