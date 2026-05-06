@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Mizeeski | Product Designer & UX/UI</title>
-    <meta name="description" content="Product Designer especialista em UX/UI. Transformo problemas complexos em interfaces intuitivas e viáveis.">
+    <meta name="description"
+        content="Product Designer especialista em UX/UI. Transformo problemas complexos em interfaces intuitivas e viáveis.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+        <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <script src="https://unpkg.com/phosphor-icons"></script>
 
@@ -59,12 +64,16 @@
             background-color: var(--background);
             color: var(--dark-text);
             /* AJUSTE HEADER: Reduzi de 72px para 60px para acompanhar o header menor */
-            padding-top: 60px; 
+            padding-top: 60px;
             transition: background-color 0.3s ease, color 0.3s ease;
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4, .btn {
+        h1,
+        h2,
+        h3,
+        h4,
+        .btn {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -332,7 +341,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
             z-index: -1;
         }
 
@@ -386,7 +395,7 @@
             border-bottom: 1px solid var(--border-color);
             overflow: hidden;
         }
-        
+
         .logos-wrapper {
             position: relative;
             width: 100%;
@@ -399,24 +408,29 @@
         .logos-slide {
             display: flex;
             align-items: center;
-            animation: scroll 35s linear infinite; 
+            animation: scroll 35s linear infinite;
             width: max-content;
         }
 
         @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .logos-slide img {
-             /* AJUSTE LOGOS: Reduzi de 32px para 28px e forcei width auto/object-fit */
-             height: 28px;
-             width: auto;
-             object-fit: contain;
-             margin: 0 40px;
-             opacity: 0.5;
-             transition: opacity 0.3s;
-             filter: grayscale(100%);
+            /* AJUSTE LOGOS: Reduzi de 32px para 28px e forcei width auto/object-fit */
+            height: 28px;
+            width: auto;
+            object-fit: contain;
+            margin: 0 40px;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+            filter: grayscale(100%);
         }
 
         .logos-slide:hover img {
@@ -498,7 +512,7 @@
 
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             border-color: var(--primary-color);
         }
 
@@ -588,9 +602,9 @@
             line-height: 1;
             font-family: 'Poppins', sans-serif;
         }
-        
+
         html[data-theme='dark'] .approach-number {
-             color: #2D333B;
+            color: #2D333B;
         }
 
         .approach-content h3 {
@@ -616,11 +630,11 @@
             font-size: 1.5rem;
             transition: 0.3s;
         }
-        
+
         .social-icons a:hover {
             color: var(--primary-color);
         }
-        
+
         .back-to-top-btn {
             position: fixed;
             bottom: 20px;
@@ -652,15 +666,35 @@
 
         /* --- RESPONSIVIDADE --- */
         @media (max-width: 768px) {
-            .desktop-nav { display: none; }
-            .mobile-nav-toggle { display: block; }
-            
-            .hero-text h1 { font-size: 2.5rem; }
-            .approach-list { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            
-            .hero-cta { flex-direction: column; width: 100%; }
-            .hero-cta .btn { width: 100%; }
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .approach-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-cta .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -709,15 +743,17 @@
             <video autoplay muted loop playsinline id="hero-video">
                 <source src="anima.mp4" type="video/mp4">
             </video>
-            
+
             <div class="container">
                 <div class="hero-text">
                     <span class="tag-hero">Product Designer & UX Specialist</span>
                     <h1>Estratégia que guia.<br>Design que engaja.</h1>
-                    <p>Unindo visão de produto, pesquisa com usuários e interfaces refinadas. Utilizo meu background técnico para garantir que cada pixel desenhado seja viável e escalável.</p>
+                    <p>Unindo visão de produto, pesquisa com usuários e interfaces refinadas. Utilizo meu background
+                        técnico para garantir que cada pixel desenhado seja viável e escalável.</p>
                     <div class="hero-cta">
                         <a href="#portfolio" class="btn btn-primary">Ver Projetos</a>
-                        <a href="https://www.linkedin.com/in/joao-mizeeski" target="_blank" class="btn btn-secondary"><i class="ph-linkedin-logo"></i> LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/joao-mizeeski" target="_blank" class="btn btn-secondary"><i
+                                class="ph-linkedin-logo"></i> LinkedIn</a>
                     </div>
                 </div>
             </div>
@@ -726,29 +762,41 @@
         <section id="logo-carousel">
             <div class="logos-wrapper">
                 <div class="logos-slide">
-                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png" data-src-light="nexxera-logo-preto.png" alt="Nexxera">
-                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png" data-src-light="concordia-preto.png" alt="Concórdia">
+                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png"
+                        data-src-light="nexxera-logo-preto.png" alt="Nexxera">
+                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png"
+                        data-src-light="concordia-preto.png" alt="Concórdia">
                     <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png" alt="Doppus">
-                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png" alt="Multidrop" style="width: 100px;">
+                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png"
+                        alt="Multidrop" style="width: 100px;">
                     <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Ageon">
                     <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Goads">
-                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png" alt="Plataforma 3/4">
+                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png"
+                        alt="Plataforma 3/4">
 
-                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png" data-src-light="nexxera-logo-preto.png" alt="Nexxera">
-                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png" data-src-light="concordia-preto.png" alt="Concórdia">
+                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png"
+                        data-src-light="nexxera-logo-preto.png" alt="Nexxera">
+                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png"
+                        data-src-light="concordia-preto.png" alt="Concórdia">
                     <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png" alt="Doppus">
-                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png" alt="Multidrop" style="width: 100px;">
+                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png"
+                        alt="Multidrop" style="width: 100px;">
                     <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Ageon">
                     <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Goads">
-                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png" alt="Plataforma 3/4">
-                    
-                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png" data-src-light="nexxera-logo-preto.png" alt="Nexxera">
-                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png" data-src-light="concordia-preto.png" alt="Concórdia">
+                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png"
+                        alt="Plataforma 3/4">
+
+                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png"
+                        data-src-light="nexxera-logo-preto.png" alt="Nexxera">
+                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png"
+                        data-src-light="concordia-preto.png" alt="Concórdia">
                     <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png" alt="Doppus">
-                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png" alt="Multidrop" style="width: 100px;">
+                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png"
+                        alt="Multidrop" style="width: 100px;">
                     <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Ageon">
                     <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Goads">
-                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png" alt="Plataforma 3/4">
+                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png"
+                        alt="Plataforma 3/4">
                 </div>
             </div>
         </section>
@@ -757,7 +805,7 @@
             <div class="container">
                 <h2>Minha Expertise</h2>
                 <p class="section-subtitle">Foco total na experiência do usuário e na qualidade da interface.</p>
-                
+
                 <div class="skills-grid">
                     <div class="skill-card">
                         <div class="skill-icon"><i class="ph-figma-logo"></i></div>
@@ -773,7 +821,8 @@
                     <div class="skill-card">
                         <div class="skill-icon"><i class="ph-layout"></i></div>
                         <h3>UI & Design Systems</h3>
-                        <p>Construção de interfaces consistentes, acessíveis e bibliotecas de componentes escaláveis.</p>
+                        <p>Construção de interfaces consistentes, acessíveis e bibliotecas de componentes escaláveis.
+                        </p>
                         <ul>
                             <li><i class="ph-check"></i> Atomic Design</li>
                             <li><i class="ph-check"></i> Design Tokens</li>
@@ -799,25 +848,30 @@
             <div class="container">
                 <h2>Projetos Selecionados</h2>
                 <p class="section-subtitle">Casos de estudo onde design e estratégia geraram resultados.</p>
-                
+
                 <div class="portfolio-grid">
-                    <!-- 1. MULTIDROP PARTNER -->
+
+                    <!-- 1. Integration Easy -->
                     <div class="project-card">
                         <div class="project-thumb">
-                            <a href="case-partner.html">
-                                <img src="cases/capa-do-case.webp" alt="Multidrop Partner">
+                            <a href="case-integration.html">
+                                <img src="cases/integration-easy.webp" alt="Easy Health Case Study">
                             </a>
                         </div>
                         <div class="project-info">
                             <div class="project-tags">
-                                <span class="tag">Product Design</span>
-                                <span class="tag">SaaS B2B</span>
+                                <span class="tag">UX / UI Design</span>
+                                <span class="tag">HealthTech</span>
+                                <span class="tag">Sistemas Complexos</span>
                             </div>
-                            <h3>Partner Mode</h3>
-                            <p>Ecossistema de integração para o mercado DACH, permitindo vendas white-label de cursos via API.</p>
-                            <a href="case-partner.html" class="project-link">Ver Case <i class="ph-arrow-right"></i></a>
+                            <h3>Integração Health Tech</h3>
+                            <p>Arquitetura sistêmica e automação de workflows entre Agenda, Estoque e Financeiro para
+                                gestão de saúde.</p>
+                            <a href="case-integration.html" class="project-link">Ver Case <i
+                                    class="ph-arrow-right"></i></a>
                         </div>
                     </div>
+                    
 
                     <!-- 2. FUNIS DE VENDA (UPSELL) -->
                     <div class="project-card">
@@ -832,34 +886,38 @@
                                 <span class="tag">SaaS Strategy</span>
                             </div>
                             <h3>Funis de Venda (Upsell)</h3>
-                            <p>Construtor visual de funis focado em aumentar o LTV, transformando lógicas complexas de venda em uma experiência intuitiva.</p>
+                            <p>Construtor visual de funis focado em aumentar o LTV, transformando lógicas complexas de
+                                venda em uma experiência intuitiva.</p>
                             <a href="case-upsell.html" class="project-link">Ver Case <i class="ph-arrow-right"></i></a>
                         </div>
                     </div>
 
-                    <!-- 3. SHOPIFY FASHION -->
+                    <!-- 3. MULTIDROP PARTNER -->
                     <div class="project-card">
                         <div class="project-thumb">
-                            <a href="https://www.behance.net/gallery/232158761/Site-loja-(e-commerce)-Shopify-com-layout-Exclusivo" target="_blank">
-                                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/6a31f5232158761.6896757e74bc3.png" alt="E-commerce Fashion">
+                            <a href="case-partner.html">
+                                <img src="cases/capa-do-case.webp" alt="Multidrop Partner">
                             </a>
                         </div>
                         <div class="project-info">
                             <div class="project-tags">
-                                <span class="tag">UI Design</span>
-                                <span class="tag">E-commerce</span>
+                                <span class="tag">Product Design</span>
+                                <span class="tag">SaaS B2B</span>
                             </div>
-                            <h3>Shopify Fashion Experience</h3>
-                            <p>Criação de uma experiência de compra fluida e responsiva, focada em aumentar o ticket médio e reduzir o abandono de carrinho.</p>
-                            <a href="https://www.behance.net/gallery/232158761/Site-loja-(e-commerce)-Shopify-com-layout-Exclusivo" target="_blank" class="project-link">Ver Case <i class="ph-arrow-right"></i></a>
+                            <h3>Partner Mode</h3>
+                            <p>Ecossistema de integração para o mercado DACH, permitindo vendas white-label de cursos
+                                via API.</p>
+                            <a href="case-partner.html" class="project-link">Ver Case <i class="ph-arrow-right"></i></a>
                         </div>
                     </div>
 
                     <!-- 4. NEXXBOT AI -->
                     <div class="project-card">
                         <div class="project-thumb">
-                            <a href="https://www.behance.net/gallery/230073607/NexxBot-Assistente-Inteligente-Interno" target="_blank">
-                                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/5ddd18230073607.686ffce177299.png" alt="NexxBot IA">
+                            <a href="https://www.behance.net/gallery/230073607/NexxBot-Assistente-Inteligente-Interno"
+                                target="_blank">
+                                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/5ddd18230073607.686ffce177299.png"
+                                    alt="NexxBot IA">
                             </a>
                         </div>
                         <div class="project-info">
@@ -868,14 +926,17 @@
                                 <span class="tag">AI Interface</span>
                             </div>
                             <h3>NexxBot AI Assistant</h3>
-                            <p>Design de um hub centralizado de inteligência artificial corporativa, facilitando o acesso à informação interna através de UX conversacional.</p>
-                            <a href="https://www.behance.net/gallery/230073607/NexxBot-Assistente-Inteligente-Interno" target="_blank" class="project-link">Ver Case <i class="ph-arrow-right"></i></a>
+                            <p>Design de um hub centralizado de inteligência artificial corporativa, facilitando o
+                                acesso à informação interna através de UX conversacional.</p>
+                            <a href="https://www.behance.net/gallery/230073607/NexxBot-Assistente-Inteligente-Interno"
+                                target="_blank" class="project-link">Ver Case <i class="ph-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
 
                 <div style="text-align: center;">
-                    <a href="https://www.behance.net/joovimizeesk" target="_blank" class="btn btn-secondary">Ver Portfólio Completo no Behance</a>
+                    <a href="https://www.behance.net/joovimizeesk" target="_blank" class="btn btn-secondary">Ver
+                        Portfólio Completo no Behance</a>
                 </div>
             </div>
         </section>
@@ -883,22 +944,25 @@
         <section id="approach">
             <div class="container">
                 <h2>Por que me contratar?</h2>
-                <p class="section-subtitle">Mais do que telas bonitas, entrego consistência técnica e visão de negócio.</p>
-                
+                <p class="section-subtitle">Mais do que telas bonitas, entrego consistência técnica e visão de negócio.
+                </p>
+
                 <div class="approach-list">
                     <div class="approach-item">
                         <div class="approach-number">01</div>
                         <div class="approach-content">
                             <h3>Handoff Perfeito</h3>
-                            <p>Compreendo a lógica de front-end. Entrego arquivos organizados, com grids, tokens e documentação que facilitam a vida dos desenvolvedores.</p>
+                            <p>Compreendo a lógica de front-end. Entrego arquivos organizados, com grids, tokens e
+                                documentação que facilitam a vida dos desenvolvedores.</p>
                         </div>
                     </div>
-                    
+
                     <div class="approach-item">
                         <div class="approach-number">02</div>
                         <div class="approach-content">
                             <h3>Visão Sistêmica</h3>
-                            <p>Não projeto telas isoladas. Penso em componentes reutilizáveis e estados variados para garantir que o produto escale com consistência.</p>
+                            <p>Não projeto telas isoladas. Penso em componentes reutilizáveis e estados variados para
+                                garantir que o produto escale com consistência.</p>
                         </div>
                     </div>
 
@@ -906,7 +970,8 @@
                         <div class="approach-number">03</div>
                         <div class="approach-content">
                             <h3>Data-Driven Design</h3>
-                            <p>Minhas decisões visuais são embasadas em pesquisa e métricas de conversão, não apenas em "achismo" ou tendências passageiras.</p>
+                            <p>Minhas decisões visuais são embasadas em pesquisa e métricas de conversão, não apenas em
+                                "achismo" ou tendências passageiras.</p>
                         </div>
                     </div>
 
@@ -914,7 +979,8 @@
                         <div class="approach-number">04</div>
                         <div class="approach-content">
                             <h3>Experiência Internacional</h3>
-                            <p>Atuação com produtos para o mercado europeu (DACH), entendendo diferentes contextos culturais e padrões de usabilidade globais.</p>
+                            <p>Atuação com produtos para o mercado europeu (DACH), entendendo diferentes contextos
+                                culturais e padrões de usabilidade globais.</p>
                         </div>
                     </div>
                 </div>
@@ -924,10 +990,13 @@
         <section id="contact" style="background-color: var(--primary-color); color: white; text-align: center;">
             <div class="container">
                 <h2 style="color: white;">Vamos construir o próximo nível?</h2>
-                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Disponível para oportunidades como Product Designer (Remoto).</p>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Disponível para oportunidades como Product
+                    Designer (Remoto).</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="mailto:joaovitor.mizeeski@gmail.com" class="btn" style="background: white; color: var(--primary-color);">Enviar E-mail</a>
-                    <a href="https://www.linkedin.com/in/joao-mizeeski/" target="_blank" class="btn" style="border: 2px solid white; color: white;">Conectar no LinkedIn</a>
+                    <a href="mailto:joaovitor.mizeeski@gmail.com" class="btn"
+                        style="background: white; color: var(--primary-color);">Enviar E-mail</a>
+                    <a href="https://www.linkedin.com/in/joao-mizeeski/" target="_blank" class="btn"
+                        style="border: 2px solid white; color: white;">Conectar no LinkedIn</a>
                 </div>
             </div>
         </section>
@@ -938,24 +1007,30 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>João Mizeeski</h4>
-                    <p>Product Designer focado em criar ferramentas digitais que facilitam a vida das pessoas e geram valor para negócios.</p>
+                    <p>Product Designer focado em criar ferramentas digitais que facilitam a vida das pessoas e geram
+                        valor para negócios.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Contato</h4>
-                    <p><a href="mailto:joaovitor.mizeeski@gmail.com" style="color: var(--light-text); text-decoration: none;">joaovitor.mizeeski@gmail.com</a></p>
+                    <p><a href="mailto:joaovitor.mizeeski@gmail.com"
+                            style="color: var(--light-text); text-decoration: none;">joaovitor.mizeeski@gmail.com</a>
+                    </p>
                     <p style="color: var(--light-text);">Florianópolis, SC - Brasil</p>
                 </div>
                 <div class="footer-col">
                     <h4>Social</h4>
                     <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/joao-mizeeski/" target="_blank"><i class="ph-linkedin-logo"></i></a>
-                        <a href="https://www.behance.net/joovimizeesk" target="_blank"><i class="ph-behance-logo"></i></a>
+                        <a href="https://www.linkedin.com/in/joao-mizeeski/" target="_blank"><i
+                                class="ph-linkedin-logo"></i></a>
+                        <a href="https://www.behance.net/joovimizeesk" target="_blank"><i
+                                class="ph-behance-logo"></i></a>
                         <a href="https://github.com/JvMizeeski" target="_blank"><i class="ph-github-logo"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom" style="text-align: center; color: var(--light-text); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p>&copy; 2025 João Vitor Mizeeski.</p>
+            <div class="footer-bottom"
+                style="text-align: center; color: var(--light-text); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; 2026 João Vitor Mizeeski.</p>
             </div>
         </div>
         <button id="back-to-top-btn" class="back-to-top-btn" title="Voltar ao topo">
@@ -1048,7 +1123,9 @@
             updateLogoSources(initialTheme);
         });
     </script>
-    
-    <script src="https://whatsa.me/bt-min.js?link=https://whatsa.me/5548984591763/?t=Gostaria%20de%20conhecer%20seu%20trabalho!"></script>
+
+    <script
+        src="https://whatsa.me/bt-min.js?link=https://whatsa.me/5548984591763/?t=Gostaria%20de%20conhecer%20seu%20trabalho!"></script>
 </body>
+
 </html>

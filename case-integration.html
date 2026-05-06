@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health System | Case Study - João Mizeeski</title>
+    <meta name="description" content="Estudo de caso: Integração sistêmica e automação de workflows para a HealthTech Easy Health.">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <style>
+        /* --- REUTILIZANDO VARIÁVEIS DO SEU SITE --- */
+        :root {
+            --primary-color: #b74ae2;
+            --primary-hover: #a336ce;
+            --dark-text: #111827;
+            --light-text: #4B5563;
+            --background: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --light-gray-bg: #F9FAFB;
+            --border-color: #E5E7EB;
+            --footer-bg: #111827;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --success-color: #10B981;
+            --warning-color: #F59E0B;
+        }
+
+        html[data-theme='dark'] {
+            --primary-color: #c06ce6;
+            --primary-hover: #d48ef2;
+            --dark-text: #F3F4F6;
+            --light-text: #9CA3AF;
+            --background: #0B0D11;
+            --card-bg: #151920;
+            --light-gray-bg: #111318;
+            --border-color: #2D333B;
+            --footer-bg: #050608;
+            --glass-bg: rgba(11, 13, 17, 0.8);
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            padding-top: 60px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, .btn { font-family: 'Poppins', sans-serif; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .container-wide {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header .container-header {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+
+        .case-hero { padding: 80px 0 60px; text-align: left; }
+
+        .case-tag {
+            display: inline-block;
+            background: rgba(183, 74, 226, 0.15);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(183, 74, 226, 0.3);
+        }
+
+        .case-hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .case-hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+        }
+
+        .meta-item h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-item p { font-weight: 600; color: var(--dark-text); }
+
+        .case-section { padding: 60px 0; }
+        .case-section h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--dark-text); }
+        .case-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--dark-text); }
+        .case-section p { margin-bottom: 1.5rem; color: var(--light-text); font-size: 1.05rem; }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .strategy-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .strategy-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mockup-container {
+            width: 100%;
+            margin: 3rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+        }
+
+        .mockup-container img { width: 100%; height: auto; display: block; }
+
+        .flow-steps {
+            position: relative;
+            margin: 3rem 0;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .step-item { position: relative; margin-bottom: 2.5rem; }
+
+        .step-item::before {
+            content: '';
+            position: absolute;
+            left: -2.6rem;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid var(--background);
+        }
+
+        .step-title { font-weight: 700; font-size: 1.1rem; color: var(--dark-text); margin-bottom: 0.5rem; }
+
+        .theme-switch-wrapper { display: flex; align-items: center; }
+        .theme-switch { position: relative; display: inline-block; width: 48px; height: 26px; }
+        .theme-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border-color); transition: .4s; border-radius: 26px; display: flex; align-items: center; justify-content: space-between; padding: 0 5px; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; z-index: 2; }
+        .slider i { color: var(--dark-text); font-size: 14px; z-index: 1; }
+        input:checked+.slider { background-color: var(--primary-color); }
+        input:checked+.slider:before { transform: translateX(22px); }
+
+        .back-nav { margin-bottom: 2rem; }
+        .back-nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .back-nav a:hover { color: var(--primary-color); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary { background-color: var(--primary-color); color: white; border: none; }
+        .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
+        .btn-secondary { background-color: transparent; color: var(--dark-text); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background-color: var(--light-gray-bg); }
+
+        .next-project { text-align: center; padding: 80px 0; background-color: var(--light-gray-bg); margin-top: 80px; }
+
+        @media (max-width: 768px) {
+            .case-hero h1 { font-size: 2.2rem; }
+            .project-meta { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container-header">
+            <div class="logo">
+                <a href="index.html">Mizeeski<span style="color:var(--primary-color)">.</span></a>
+            </div>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <div class="slider">
+                        <i class="ph-sun"></i>
+                        <i class="ph-moon"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="case-hero">
+            <div class="container">
+                <div class="back-nav">
+                    <a href="mizeeski.com"><i class="ph-arrow-left"></i> Voltar para Home</a>
+                </div>
+                
+                <span class="case-tag">SaaS / HealthTech</span>
+                <h1>Easy Health: Integração Sistêmica e Automação de Workflows</h1>
+                <p class="subtitle">Redesenhando a arquitetura de uma plataforma healthcare para eliminar falhas operacionais e automatizar o fluxo entre Agenda, Estoque e Financeiro.</p>
+
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Role</h4>
+                        <p>Product Designer (UI/UX)</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Contexto</h4>
+                        <p>Complex Systems & Automation</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Foco</h4>
+                        <p>Atomic Design & Workflows</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Stack</h4>
+                        <p>Figma, Design System</p>
+                    </div>
+                </div>
+
+                <div class="mockup-container">
+                    <img src="cases/easy-1.png" alt="Capa do Case Easy Health">
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <h2>O Desafio (The Problem)</h2>
+                <p>Antes da intervenção, a plataforma operava com módulos fragmentados e processos puramente manuais. A falta de comunicação entre os setores de Agenda, Estoque e Financeiro gerava uma alta carga cognitiva para os usuários e prejuízos operacionais reais.</p>
+                
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <h4><i class="ph-intersect"></i> Fragmentação de Dados</h4>
+                        <p>Procedimentos, orçamentos e insumos não possuíam vínculo, exigindo preenchimentos repetitivos.</p>
+                    </div>
+                    <div class="strategy-card">
+                        <h4><i class="ph-warning"></i> Inconsistência de Estoque</h4>
+                        <p>Falta de reserva prévia resultava em cancelamentos de última hora por falta de insumos.</p>
+                    </div>
+                    <div class="strategy-card">
+                        <h4><i class="ph-money"></i> Gargalo Financeiro</h4>
+                        <p>A geração de receitas e notas fiscais era um processo manual passível de erros humanos críticos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2>A Solução (The Solution)</h2>
+                <p>O projeto consistiu em redesenhar a arquitetura do sistema para criar um <strong>Fluxo de Dados Contínuo</strong>. A estratégia central foi transformar o "Procedimento" em um Template Inteligente (Blueprint) que dita o comportamento de todos os outros módulos.</p>
+
+                <h3>1. Procedimento como Template</h3>
+                <p>Estruturei um sistema de cadastro onde o procedimento clínico carrega toda a inteligência do negócio: BOM (Bill of Materials), regras de valores-base e Engine de Repasses para automação de comissões.</p>
+
+                <div class="mockup-container">
+                    <img src="cases/easy-2.png" alt="Arquitetura de Procedimento">
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <h2>Agendamento com Inteligência de Predição</h2>
+                <p>O novo modal de agendamento atua como um assistente de decisão. Ao salvar um agendamento, o sistema valida e "sequestra" itens do estoque em tempo real, além de disparar um rascunho de orçamento vinculado.</p>
+
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <h4><i class="ph-calendar-check"></i> Check de Estoque</h4>
+                        <p>Validação de disponibilidade no momento exato da marcação da consulta.</p>
+                    </div>
+                    <div class="strategy-card">
+                        <h4><i class="ph-lightning"></i> Gatilho de Finalização</h4>
+                        <p>Automação em cascata: baixa física no estoque e conversão de orçamento em receita no clique final.</p>
+                    </div>
+                </div>
+
+                <h3>UX de Atendimento e Visibilidade</h3>
+                <p>Apliquei heurísticas de Hierarquia Visual e <strong>Status Semânticos</strong> (Semáforos) para que o profissional saiba a saúde financeira e de estoque de cada consulta diretamente na agenda.</p>
+
+                <div class="mockup-container">
+                    <img src="cases/easy-3.png" alt="Interface da Agenda com Status Semânticos">
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2>Gestão de Recorrência e Tratamentos</h2>
+                <p>Inspirado em modelos de rastreabilidade de alta performance, implementei a <strong>"Linha do Tempo de Tratamento"</strong>. O sistema identifica sessões fracionadas (ex: 1/6) e sugere o Smart Scheduling para os próximos horários.</p>
+                
+                <div class="flow-steps">
+                    <div class="step-item">
+                        <div class="step-title">Identificação de Protocolo</div>
+                        <p>O sistema detecta automaticamente se o procedimento exige múltiplas etapas.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Smart Scheduling</div>
+                        <p>Sugestão automática de datas futuras mantendo a herança de dados entre executores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <h2>Resultados Esperados</h2>
+                <div class="strategy-grid">
+                    <div class="strategy-card" style="border-left: 4px solid var(--success-color);">
+                        <h4 style="color: var(--success-color);">90%</h4>
+                        <p>Redução de erros manuais no preenchimento financeiro e de estoque.</p>
+                    </div>
+                    <div class="strategy-card" style="border-left: 4px solid var(--primary-color);">
+                        <h4>Eficiência</h4>
+                        <p>Redução drástica no tempo de checkout e fechamento de conta do paciente.</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem;">
+                    <h3>Ferramentas e Metodologias</h3>
+                    <p style="font-family: monospace; font-size: 0.9rem;">UX Research • Service Blueprinting • Atomic Design System • Arquitetura de Dados • Figma (Prototipação)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="next-project">
+        <div class="container">
+            <h3>Gostou deste case de HealthTech?</h3>
+            <p style="margin-bottom: 2rem; color: var(--light-text);">Podemos aplicar essa lógica de automação e Design System no seu produto.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="mizeeski.com#portfolio" class="btn btn-secondary">Ver outros projetos</a>
+                <a href="mailto:joaovitor.mizeeski@gmail.com" class="btn btn-primary">Entrar em contato</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="text-align: center; color: var(--light-text); font-size: 0.85rem; padding-top: 2rem;">
+                <p>&copy; 2026 João Vitor Mizeeski.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const docHtml = document.documentElement;
+
+            function switchTheme() {
+                const currentTheme = docHtml.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                docHtml.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+
+            themeToggle.addEventListener('change', switchTheme);
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                docHtml.setAttribute('data-theme', 'light');
+                themeToggle.checked = false;
+            } else {
+                docHtml.setAttribute('data-theme', 'dark');
+                themeToggle.checked = true;
+            }
+        });
+    </script>
+</body>
+</html>
