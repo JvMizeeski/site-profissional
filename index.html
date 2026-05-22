@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Mizeeski | Product Designer & UX/UI</title>
     <meta name="description"
-        content="Product Designer especialista em UX/UI. Transformo problemas complexos in interfaces intuitivas e viáveis.">
+        content="Product Designer especialista em UX/UI. Transformo problemas complexos em interfaces intuitivas e viáveis.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -438,7 +438,7 @@
             filter: grayscale(0%);
         }
 
-        /* --- ESTILOS DA NOVA SEÇÃO DE CONSULTORIAS (ESTILO TECH MESH GRID) --- */
+        /* --- SEÇÃO DE CONSULTORIAS --- */
         #consultorias {
             position: relative;
             overflow: hidden;
@@ -687,6 +687,158 @@
             margin-bottom: 0.5rem;
         }
 
+        /* --- SOBRE MIM & ARTIGOS (Nova Seção com Malha Computacional) --- */
+        #about {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--light-gray-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-tech-mesh {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%; left: -50%;
+            background-image: 
+                linear-gradient(rgba(183, 74, 226, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(183, 74, 226, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: rotate(-15deg);
+            z-index: 0;
+            pointer-events: none;
+            animation: gridPanAbout 60s linear infinite;
+        }
+
+        @keyframes gridPanAbout {
+            0% { background-position: 0 0; }
+            100% { background-position: -500px 500px; }
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-info h3, .about-education h3, .articles-heading h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .about-info p {
+            color: var(--light-text);
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .education-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-item {
+            border-left: 2px solid var(--primary-color);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            left: -6px;
+            top: 6px;
+        }
+
+        .timeline-item h4 {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        .timeline-item span {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            line-height: 1.5;
+        }
+
+        .about-articles {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--border-color);
+            padding-top: 4rem;
+        }
+
+        .articles-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .article-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .article-content span {
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            color: var(--dark-text);
+        }
+
+        .article-content p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
         /* --- FOOTER --- */
         footer {
             border-top: 1px solid var(--border-color);
@@ -753,9 +905,9 @@
                 font-size: 2.5rem;
             }
 
-            .consultorias-grid {
+            .consultorias-grid, .about-wrapper {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
 
             .approach-list {
@@ -792,6 +944,7 @@
                         <li><a href="#expertise">Expertise</a></li>
                         <li><a href="#portfolio">Projetos</a></li>
                         <li><a href="#approach">Diferencial</a></li>
+                        <li><a href="#about">Sobre & Artigos</a></li>
                         <li><a href="#contact">Contato</a></li>
                     </ul>
                 </nav>
@@ -814,6 +967,7 @@
                     <li><a href="#expertise">Expertise</a></li>
                     <li><a href="#portfolio">Projetos</a></li>
                     <li><a href="#approach">Diferencial</a></li>
+                    <li><a href="#about">Sobre & Artigos</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
             </nav>
@@ -883,7 +1037,7 @@
             </div>
         </section>
 
-        <!-- NOVA SEÇÃO: POSSIBILIDADES DE CONSULTORIA -->
+        <!-- SEÇÃO: POSSIBILIDADES DE CONSULTORIA -->
         <section id="consultorias">
             <div class="consultorias-tech-mesh"></div>
             <div class="container">
@@ -897,16 +1051,16 @@
                             <h3><i class="ph-shield-check"></i> UX & Product Due Diligence</h3>
                             <p>Auditoria profunda de usabilidade, consistência de Design System e aderência a regras operacionais. Ideal para blindar ativos digitais antes de rodadas de investimento, fusões ou aquisições (M&A).</p>
                         </div>
-                        <a href="https://mizeeski.com/ux" class="btn btn-primary" style="width: 100%;">Ver Detalhes da Auditoria</a>
+                        <a href="ux-due-diligence.html" class="btn btn-primary" style="width: 100%;">Ver Detalhes da Auditoria</a>
                     </div>
 
-                    <!-- Frente 2: Softwares e Process  os -->
+                    <!-- Frente 2: Softwares e Processos -->
                     <div class="consultoria-premium-card">
                         <div class="consultoria-card-content">
                             <h3><i class="ph-cpu"></i> Otimização de Softwares e Processos</h3>
                             <p>Identifique onde sua interface atual está fazendo a empresa perder tempo ou faturamento. Redesenho completo de ERPs, dashboards complexos e fluxos burocráticos internos para máxima produtividade.</p>
                         </div>
-                        <a href="https://mizeeski.com/due" class="btn btn-secondary" style="width: 100%;">Ver Detalhes da Consultoria</a>
+                        <a href="consultoria-processos.html" class="btn btn-secondary" style="width: 100%;">Ver Detalhes da Consultoria</a>
                     </div>
                 </div>
             </div>
@@ -1092,6 +1246,83 @@
                             <h3>Experiência Internacional</h3>
                             <p>Atuação com produtos para o mercado europeu (DACH), entendendo diferentes contextos
                                 culturais e padrões de usabilidade globais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOVA SEÇÃO: SOBRE MIM & ARTIGOS -->
+        <section id="about">
+            <div class="about-tech-mesh"></div>
+            <div class="container">
+                <div class="about-wrapper">
+                    <div class="about-info">
+                        <h3>Sobre Mim</h3>
+                        <p>Sou especialista em UX / UI, design de produtos e análise de comportamento. Busco conectar e cruzar profundamente as fronteiras da tecnologia, do comportamento humano e da gestão estratégica para projetar soluções digitais de alto impacto.</p>
+                        <p>Tenho um background técnico consolidado em web design, design gráfico e desenvolvimento front-end. Minha atuação une a precisão estética e sistemática do UI Design à maturidade estratégica do UX, garantindo que interfaces complexas operem com total viabilidade de engenharia e escalabilidade sustentável.</p>
+                        <p>Além de atuar ativamente no setor corporativo de tech, estendo meus estudos de forma contínua escrevendo artigos científicos e técnicos sobre os temas multidisciplinares que sou apaixonado por explorar.</p>
+                    </div>
+                    <div class="about-education">
+                        <h3>Qualificações & Educação</h3>
+                        <div class="education-timeline">
+                            <div class="timeline-item">
+                                <h4>Pós-graduação em Neurociência e Comportamento</h4>
+                                <span>Pós-graduação | Estácio</span>
+                                <p>Estudo dos vieses cognitivos, tomada de decisão, carga de processamento mental e psicologia aplicados ao comportamento digital do usuário.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Pós-Graduação em Engenharia de Software</h4>
+                                <span>Pós-graduação | PUC-Rio</span>
+                                <p>Especialização em arquitetura de sistemas escaláveis, padrões de desenvolvimento de código e viabilidade estrutural de produtos digitais.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Pós-Graduação em UX Design</h4>
+                                <span>Pós-graduação | PUC-RS</span>
+                                <p>Aprofundamento avançado em metodologias de pesquisa com usuários, estratégias de product discovery, arquitetura da informação e testes heurísticos.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Graduação em Administração de Empresas</h4>
+                                <span>Bacharelado</span>
+                                <p>Formação em gestão organizacional, mapeamento de processos operacionais internos, viabilidade mercadológica e governança corporativa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-BLOCO: ÚLTIMOS ARTIGOS -->
+                <div class="about-articles">
+                    <div class="articles-heading">
+                        <h2>Últimos Artigos</h2>
+                        <p style="color: var(--light-text);">Insights técnicos, ensaios e produções autorais unindo design, engenharia e comportamento cognitivo.</p>
+                    </div>
+                    <div class="articles-grid">
+                        <!-- Artigo 1 -->
+                        <div class="article-card">
+                            <div class="article-content">
+                                <span>Neurociência Cognitiva</span>
+                                <h4>A Terceirização da Carga Mental: Uma reflexão cognitiva sobre o Google I/O 2026</h4>
+                                <p>A Terceirização da Carga Mental: Uma reflexão cognitiva sobre o Google I/O 2026 Ontem assisti o release do Google I/O 2026, e é impressionante como eles consolidaram uma virada de chave …</p>
+                            </div>
+                            <a href="#" class="project-link">Ler Artigo <i class="ph-arrow-right"></i></a>
+                        </div>
+                        <!-- Artigo 2 -->
+                        <div class="article-card">
+                            <div class="article-content">
+                                <span>Neurociência e IA</span>
+                                <h4>Além da Automação: Por que integrar fluxos é sobre devolver capacidade cognitiva ao usuário.</h4>
+                                <p>Além da Automação: Por que integrar fluxos é sobre devolver capacidade cognitiva ao usuário. Na área de produtos, pensamos a respeito do uso das plataformas que operamos no dia a dia, e como …</p>
+                            </div>
+                            <a href="#" class="project-link">Ler Artigo <i class="ph-arrow-right"></i></a>
+                        </div>
+                        <!-- Artigo 3 -->
+                        <div class="article-card">
+                            <div class="article-content">
+                                <span>Ensaio Crítico</span>
+                                <h4>A Arquitetura de um Mosaico: O que o ataque a Lupita Nyong’o como Helena revela sobre o racismo estrutural.</h4>
+                                <p>A Arquitetura de um Mosaico: O que o ataque a Lupita Nyong’o como Helena revela sobre o racismo estrutural. Pedimos fidelidade histórica a obras que sequer têm um registro histórico sólido. Por …</p>
+                            </div>
+                            <a href="#" class="project-link">Ler Artigo <i class="ph-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
