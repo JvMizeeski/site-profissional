@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Mizeeski | Product Designer & UX/UI</title>
     <meta name="description"
-        content="Product Designer especialista em UX/UI. Transformo problemas complexos em interfaces intuitivas e viáveis.">
+        content="Product Designer especialista em UX/UI. Transformo problemas complexos in interfaces intuitivas e viáveis.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700&family=Poppins:wght=500;600;700&display=swap"
         rel="stylesheet">
 
         <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -438,6 +438,80 @@
             filter: grayscale(0%);
         }
 
+        /* --- ESTILOS DA NOVA SEÇÃO DE CONSULTORIAS (ESTILO TECH MESH GRID) --- */
+        #consultorias {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--background);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .consultorias-tech-mesh {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%; left: -50%;
+            background-image: 
+                linear-gradient(rgba(183, 74, 226, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(183, 74, 226, 0.03) 1px, transparent 1px);
+            background-size: 45px 45px;
+            transform: rotate(15deg);
+            z-index: 0;
+            pointer-events: none;
+            animation: gridPanSection 50s linear infinite;
+        }
+
+        @keyframes gridPanSection {
+            0% { background-position: 0 0; }
+            100% { background-position: 450px 450px; }
+        }
+
+        .consultorias-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .consultoria-premium-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .consultoria-premium-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(183, 74, 226, 0.06);
+        }
+
+        .consultoria-card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--dark-text);
+        }
+
+        .consultoria-card-content h3 i {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .consultoria-card-content p {
+            color: var(--light-text);
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
         /* --- SKILLS --- */
         .skills-grid {
             display: grid;
@@ -508,6 +582,7 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-card:hover {
@@ -678,6 +753,11 @@
                 font-size: 2.5rem;
             }
 
+            .consultorias-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
             .approach-list {
                 grid-template-columns: 1fr;
             }
@@ -708,6 +788,7 @@
             <div class="nav-wrapper">
                 <nav class="desktop-nav">
                     <ul>
+                        <li><a href="#consultorias">Consultorias</a></li>
                         <li><a href="#expertise">Expertise</a></li>
                         <li><a href="#portfolio">Projetos</a></li>
                         <li><a href="#approach">Diferencial</a></li>
@@ -729,6 +810,7 @@
             </div>
             <nav class="mobile-nav">
                 <ul>
+                    <li><a href="#consultorias">Consultorias</a></li>
                     <li><a href="#expertise">Expertise</a></li>
                     <li><a href="#portfolio">Projetos</a></li>
                     <li><a href="#approach">Diferencial</a></li>
@@ -797,6 +879,35 @@
                     <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Goads">
                     <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png"
                         alt="Plataforma 3/4">
+                </div>
+            </div>
+        </section>
+
+        <!-- NOVA SEÇÃO: POSSIBILIDADES DE CONSULTORIA -->
+        <section id="consultorias">
+            <div class="consultorias-tech-mesh"></div>
+            <div class="container">
+                <h2>Soluções Consultivas e Especializadas</h2>
+                <p class="section-subtitle">Acelere os resultados do seu produto ou otimize a operação técnica da sua empresa através de avaliações estratégicas estruturadas.</p>
+
+                <div class="consultorias-grid">
+                    <!-- Frente 1: Due Diligence -->
+                    <div class="consultoria-premium-card">
+                        <div class="consultoria-card-content">
+                            <h3><i class="ph-shield-check"></i> UX & Product Due Diligence</h3>
+                            <p>Auditoria profunda de usabilidade, consistência de Design System e aderência a regras operacionais. Ideal para blindar ativos digitais antes de rodadas de investimento, fusões ou aquisições (M&A).</p>
+                        </div>
+                        <a href="ux-due-diligence.html" class="btn btn-primary" style="width: 100%;">Ver Detalhes da Auditoria</a>
+                    </div>
+
+                    <!-- Frente 2: Softwares e Processos -->
+                    <div class="consultoria-premium-card">
+                        <div class="consultoria-card-content">
+                            <h3><i class="ph-cpu"></i> Otimização de Softwares e Processos</h3>
+                            <p>Identifique onde sua interface atual está fazendo a empresa perder tempo ou faturamento. Redesenho completo de ERPs, dashboards complexos e fluxos burocráticos internos para máxima produtividade.</p>
+                        </div>
+                        <a href="consultoria-processos.html" class="btn btn-secondary" style="width: 100%;">Ver Detalhes da Consultoria</a>
+                    </div>
                 </div>
             </div>
         </section>

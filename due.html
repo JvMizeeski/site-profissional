@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Mizeeski | Consultoria e Auditoria de UX UI para Sistemas e Sites</title>
+    <meta name="description"
+        content="Consultoria especializada em usabilidade. Identifique por que seus usuários abandonam seu sistema ou site e receba um plano de melhorias prático.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700&family=Poppins:wght=500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <style>
+        /* --- RESET E CONFIGURAÇÕES GLOBAIS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- VARIÁVEIS DE COR --- */
+        :root {
+            --primary-color: #b74ae2;
+            --primary-hover: #a336ce;
+            --dark-text: #111827;
+            --light-text: #4B5563;
+            --background: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --light-gray-bg: #F9FAFB;
+            --border-color: #E5E7EB;
+            --footer-bg: #111827;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        html[data-theme='dark'] {
+            --primary-color: #c06ce6;
+            --primary-hover: #d48ef2;
+            --dark-text: #F3F4F6;
+            --light-text: #9CA3AF;
+            --background: #0B0D11;
+            --card-bg: #151920;
+            --light-gray-bg: #111318;
+            --border-color: #2D333B;
+            --footer-bg: #050608;
+            --glass-bg: rgba(11, 13, 17, 0.8);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            padding-top: 60px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .btn {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.8s cubic-bezier(0.6, 0.2, 0.1, 1);
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--light-text);
+            font-size: 1.125rem;
+            margin-bottom: 4rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .desktop-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .desktop-nav ul li a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .desktop-nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- TOGGLE THEME --- */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 26px;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border-color);
+            transition: .4s;
+            border-radius: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .slider i {
+            color: var(--dark-text);
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(22px);
+        }
+
+        /* --- MOBILE NAV --- */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark-text);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--background);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav ul { list-style: none; }
+        .mobile-nav ul li { padding: 1rem 0; }
+        .mobile-nav ul li a { text-decoration: none; color: var(--dark-text); font-weight: 500; }
+
+        /* --- BOTÕES --- */
+        .btn {
+            padding: 14px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(183, 74, 226, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(183, 74, 226, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--dark-text);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* --- HERO COM ANIMAÇÃO AMBIENT CSS --- */
+        #hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 80% 20%, rgba(183, 74, 226, 0.12), transparent 45%), var(--background);
+        }
+
+        .hero-glow-element {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--primary-color);
+            filter: blur(140px);
+            opacity: 0.15;
+            top: 15%;
+            right: 5%;
+            z-index: 0;
+            pointer-events: none;
+            animation: techGlow 10s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes techGlow {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.12; }
+            50% { transform: translate(-30px, 20px) scale(1.15); opacity: 0.18; }
+            100% { transform: translate(10px, -10px) scale(0.95); opacity: 0.15; }
+        }
+
+        #hero .container {
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero-text {
+            max-width: 800px;
+        }
+
+        .tag-hero {
+            display: inline-block;
+            background: rgba(183, 74, 226, 0.12);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(183, 74, 226, 0.25);
+        }
+
+        html[data-theme='dark'] .tag-hero {
+            color: #dcbbf5;
+        }
+
+        .hero-text h1 {
+            font-size: 3.3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* --- BOTÃO FLUTUANTE DO WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.9rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            background-color: #20ba5a;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* --- LOGO CAROUSEL --- */
+        #logo-carousel {
+            background-color: var(--background);
+            padding: 35px 0;
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .logos-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .logos-slide {
+            display: flex;
+            align-items: center;
+            animation: scroll 35s linear infinite;
+            width: max-content;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .logos-slide img {
+            height: 26px;
+            width: auto;
+            object-fit: contain;
+            margin: 0 40px;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+            filter: grayscale(100%);
+        }
+
+        .logos-slide:hover img {
+            opacity: 0.8;
+            filter: grayscale(0%);
+        }
+
+        /* --- SEÇÃO DE NECESSIDADES --- */
+        #problemas {
+            background-color: var(--light-gray-bg);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            border-color: #EF4444;
+            transform: translateY(-3px);
+        }
+
+        .problem-icon {
+            font-size: 2.2rem;
+            color: #EF4444;
+            margin-bottom: 1.2rem;
+        }
+
+        .problem-card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            color: var(--dark-text);
+        }
+
+        .problem-card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        /* --- SOLUÇÃO E ESCOPO DA CONSULTORIA --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .skill-icon {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .skill-card ul li {
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .skill-card ul li i {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        /* --- SEÇÃO INTELIGÊNCIA ARTIFICIAL (IA) --- */
+        #ai-audit {
+            background-color: var(--light-gray-bg);
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .ai-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .ai-content p {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .ai-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ai-feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .ai-feature-card i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .ai-feature-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ai-feature-card p {
+            font-size: 0.875rem;
+            color: var(--light-text);
+            margin-bottom: 0;
+        }
+
+        /* --- METODOLOGIA EM 2 ETAPAS --- */
+        .approach-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .approach-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .approach-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--border-color);
+            line-height: 1;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html[data-theme='dark'] .approach-number {
+            color: #2D333B;
+        }
+
+        .approach-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- CARD DE PREÇO --- */
+        #pricing {
+            background-color: var(--background);
+            text-align: center;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 3.5rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(183, 74, 226, 0.05);
+        }
+
+        .pricing-badge {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin: 1rem 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--light-text);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .pricing-features li {
+            margin-bottom: 0.85rem;
+            font-size: 1rem;
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pricing-features li i {
+            color: #10B981;
+            font-size: 1.2rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .social-icons a {
+            color: var(--light-text);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .desktop-nav { display: none; }
+            .mobile-nav-toggle { display: block; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .approach-list, .ai-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-cta { flex-direction: column; width: 100%; }
+            .hero-cta .btn { width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#">Mizeeski<span style="color:var(--primary-color)">.</span></a>
+            </div>
+            <div class="nav-wrapper">
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="#problemas">Sinais de Alerta</a></li>
+                        <li><a href="#solucao">O que Avaliamos</a></li>
+                        <li><a href="#ai-audit">Sistemas com IA</a></li>
+                        <li><a href="#metodo">Como Funciona</a></li>
+                        <li><a href="#pricing">Preço Fixo</a></li>
+                    </ul>
+                </nav>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" />
+                        <div class="slider">
+                            <i class="ph-sun"></i>
+                            <i class="ph-moon"></i>
+                        </div>
+                    </label>
+                </div>
+                <button class="mobile-nav-toggle">
+                    <i class="ph-list"></i>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#problemas">Sinais de Alerta</a></li>
+                    <li><a href="#solucao">O que Avaliamos</a></li>
+                    <li><a href="#ai-audit">Sistemas com IA</a></li>
+                    <li><a href="#metodo">Como Funciona</a></li>
+                    <li><a href="#pricing">Preço Fixo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-glow-element"></div>
+            <div class="container">
+                <div class="hero-text">
+                    <span class="tag-hero">Avaliação e Diagnóstico de Interface</span>
+                    <h1>Seu site ou sistema está perdendo clientes? Descubra o motivo exato.</h1>
+                    <p>Sem achismos ou suposições. Eu avalio a usabilidade do seu produto digital, mapeio onde os usuários ficam confusos ou desistem, e te entrego um documento completo de melhorias com foco total em aumentar suas conversões.</p>
+                    <div class="hero-cta">
+                        <a href="#pricing" class="btn btn-primary">Iniciar Diagnóstico Sem Compromisso</a>
+                        <a href="#problemas" class="btn btn-secondary">Entender Sintomas</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="logo-carousel">
+            <div class="logos-wrapper">
+                <div class="logos-slide">
+                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png" data-src-light="nexxera-logo-preto.png" alt="Nexxera">
+                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png" data-src-light="concordia-preto.png" alt="Concórdia">
+                    <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png" alt="Doppus">
+                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png" alt="Multidrop" style="width: 100px;">
+                    <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Ageon">
+                    <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Goads">
+                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png" alt="Plataforma 3/4">
+
+                    <img src="nexxera-logo-branca.png" data-src-dark="nexxera-logo-branca.png" data-src-light="nexxera-logo-preto.png" alt="Nexxera">
+                    <img src="concordia-branco.png" data-src-dark="concordia-branco.png" data-src-light="concordia-preto.png" alt="Concórdia">
+                    <img src="doppus.png" data-src-dark="doppus.png" data-src-light="doppus-preto.png" alt="Doppus">
+                    <img src="multidrop.png" data-src-dark="multidrop.png" data-src-light="multidrop-preta.png" alt="Multidrop" style="width: 100px;">
+                    <img src="ageon.png" data-src-dark="ageon.png" data-src-light="ageon-preto.png" alt="Ageon">
+                    <img src="goads.png" data-src-dark="goads.png" data-src-light="goads-preto.png" alt="Goads">
+                    <img src="platafroma.png" data-src-dark="platafroma.png" data-src-light="platafroma-preto.png" alt="Plataforma 3/4">
+                </div>
+            </div>
+        </section>
+
+        <section id="problemas">
+            <div class="container">
+                <h2>Sua empresa está passando por algum desses problemas?</h2>
+                <p class="section-subtitle">Sua interface não é apenas estética; ela é a engrenagem que dita o ritmo do seu negócio.</p>
+
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon"><i class="ph-user-minus"></i></div>
+                        <h3>Usuários Desistem no Meio</h3>
+                        <p>O cliente entra no site, inicia um cadastro ou coloca um produto no carrinho, mas abandona o fluxo sem concluir a ação principal.</p>
+                    </div>
+
+                    <div class="problem-card">
+                        <div class="problem-icon"><i class="ph-wrench"></i></div>
+                        <h3>Time Técnico Travado</h3>
+                        <p>Os desenvolvedores passam semanas criando ou refazendo telas porque as regras de negócio ou o fluxo visual não foram bem validados de antemão.</p>
+                    </div>
+
+                    <div class="problem-card">
+                        <div class="problem-icon"><i class="ph-headset"></i></div>
+                        <h3>Suporte Lotado de Dúvidas</h3>
+                        <p>Os clientes abrem chamados constantemente para perguntar "onde clico" ou "como faço tal ação", sobrecarregando sua equipe operacional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucao">
+            <div class="container">
+                <h2>Como nossa auditoria resolve essa fricção</h2>
+                <p class="section-subtitle">Unindo meu background em Administração, Engenharia de Software e Neurociência para analisar o produto por completo.</p>
+
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="ph-eye"></i></div>
+                        <h3>Análise Cognitiva e Comportamental</h3>
+                        <p>Avalio como a mente do usuário processa a sua tela. Reduzo o cansaço visual e a confusão para tornar a navegação fluida e óbvia.</p>
+                        <ul>
+                            <li><i class="ph-check"></i> Identificação de excessos de texto ou campos</li>
+                            <li><i class="ph-check"></i> Otimização visual da hierarquia de botões</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="ph-laptop"></i></div>
+                        <h3>Avaliação de Processos e Viabilidade</h3>
+                        <p>Não entrego soluções impossíveis de programar. Avalio se os componentes propostos são escaláveis e fáceis de manter pelo seu time de tecnologia.</p>
+                        <ul>
+                            <li><i class="ph-check"></i> Alinhamento com padrões de Front-End</li>
+                            <li><i class="ph-check"></i> Análise de reaproveitamento de componentes</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="ph-chart-line-up"></i></div>
+                        <h3>Tradução das Regras de Negócio</h3>
+                        <p>O sistema precisa obedecer às regras da sua empresa sem criar barreiras para o usuário final. Simplifico fluxos operacionais internos complexos.</p>
+                        <ul>
+                            <li><i class="ph-check"></i> Redução de cliques desnecessários</li>
+                            <li><i class="ph-check"></i> Clareza total em formulários complexos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai-audit">
+            <div class="container">
+                <div class="ai-grid">
+                    <div class="ai-content">
+                        <h3>Sua empresa usa ou quer usar Inteligência Artificial?</h3>
+                        <p>Integrar IA ao produto virou tendência, mas criar telas conversacionais eficientes é o verdadeiro desafio. Ferramentas de IA mal projetadas confundem o usuário, geram respostas perdidas no chat e causam estresse cognitivo.</p>
+                        <p>Seja avaliando um sistema de IA que seu time desenvolveu internamente ou sugerindo melhorias na busca de soluções prontas no mercado, audito a arquitetura dos fluxos inteligentes para garantir que a IA seja intuitiva e gere valor real ao usuário.</p>
+                    </div>
+                    <div class="ai-features">
+                        <div class="ai-feature-card">
+                            <i class="ph-sparkles"></i>
+                            <h4>Interface Conversacional</h4>
+                            <p>Ajustes de layout para históricos, prompts sugeridos e tratamento de erros de IA de forma clara.</p>
+                        </div>
+                        <div class="ai-feature-card">
+                            <i class="ph-brain"></i>
+                            <h4>Adoção de Recursos</h4>
+                            <p>Mapeamento para garantir que o usuário entenda e utilize os poderes de IA que você implementou.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="metodo">
+            <div class="container">
+                <h2>Organização do Trabalho: Em 2 Etapas</h2>
+                <p class="section-subtitle">Você sabe exatamente quanto gasta e o que recebe em cada passo. Sem amarras.</p>
+
+                <div class="approach-list">
+                    <div class="approach-item">
+                        <div class="approach-number">01</div>
+                        <div class="approach-content">
+                            <h3>Diagnóstico Inicial Avançado (Preço Fixo)</h3>
+                            <p>O primeiro passo é um serviço pontual e sem compromisso. Eu faço a avaliação detalhada da sua interface atual, organizo todos os pontos de melhoria e insights em um documento completo e fazemos uma sessão ao vivo para tirar dúvidas. Você não assina contratos longos aqui.</p>
+                        </div>
+                    </div>
+
+                    <div class="approach-item">
+                        <div class="approach-number">02</div>
+                        <div class="approach-content">
+                            <h3>Desenho Técnico das Soluções (Sob Orçamento)</h3>
+                            <p>Após receber o diagnóstico, você decide como prosseguir. Se quiser que eu execute o redesenho das telas, estruture o design system ou ajuste as regras de negócio no layout, montamos um escopo customizado e fechamos uma proposta sob medida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <div class="container">
+                <h2>Dê o primeiro passo para otimizar seu site ou sistema</h2>
+                <p class="section-subtitle">Tenha clareza absoluta de onde focar seus esforços de desenvolvimento técnico sem assumir riscos contratuais.</p>
+
+                <div class="pricing-card">
+                    <span class="pricing-badge">Etapa 1: Diagnóstico de Interface</span>
+                    <h3>Relatório de Auditoria Heurística</h3>
+                    <div class="price">R$ 250 <span>/ taxa única comercial</span></div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="ph-check-circle"></i> Avaliação minuciosa do fluxo principal do seu produto</li>
+                        <li><i class="ph-check-circle"></i> Documento completo apontando gargalos de usabilidade</li>
+                        <li><i class="ph-check-circle"></i> Sugestões práticas baseadas em neurociência e negócios</li>
+                        <li><i class="ph-check-circle"></i> Reunião online de alinhamento e retirada de dúvidas</li>
+                        <li><i class="ph-check-circle"></i> **Sem assinaturas, sem contratos longos, sem letras miúdas**</li>
+                    </ul>
+
+                    <a href="https://wa.me/5548984591763?text=Olá%20João,%20gostaria%20de%20solicitar%20o%20Diagnóstico%20de%20UX/UI%20para%20meu%20sistema." target="_blank" class="btn btn-primary" style="width: 100%;">
+                        Solicitar Meu Diagnóstico Sem Compromisso
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="background-color: var(--primary-color); color: white; text-align: center;">
+            <div class="container">
+                <h2 style="color: white;">Quer parar de perder conversões por causa do layout?</h2>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Disponível para consultorias focadas em resultados de negócio, eficiência técnica de desenvolvimento e usabilidade de sistemas.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/5548984591763?text=Olá%20João,%20gostaria%20de%20conversar%20sobre%20a%20auditoria%20de%20UX/UI%20do%20meu%20produto." target="_blank" class="btn" style="background: white; color: var(--primary-color);"><i class="ph-whatsapp-logo"></i> Chamar no WhatsApp</a>
+                    <a href="mailto:joaovitor.mizeeski@gmail.com?subject=Solicitacao de Diagnostico Avançado de UX UI" class="btn" style="border: 2px solid white; color: white;">Enviar E-mail</a>
+                    <a href="https://www.linkedin.com/in/joao-mizeeski/" target="_blank" class="btn" style="border: 2px solid white; color: white;">Me Adicionar no LinkedIn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>João Mizeeski</h4>
+                    <p>Especialista em UX/UI com bagagem multidisciplinar em Administração, Pós em Engenharia de Software e Neurociência Comportamental, unindo técnica e resultados corporativos.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <p><a href="mailto:joaovitor.mizeeski@gmail.com" style="color: var(--light-text); text-decoration: none;">joaovitor.mizeeski@gmail.com</a></p>
+                    <p><a href="https://wa.me/5548984591763" target="_blank" style="color: var(--light-text); text-decoration: none;">+55 (48) 98459-1763</a></p>
+                    <p style="color: var(--light-text);">Florianópolis, SC - Brasil</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/joao-mizeeski/" target="_blank"><i class="ph-linkedin-logo"></i></a>
+                        <a href="https://www.instagram.com/v0njao/" target="_blank"><i class="ph-instagram-logo"></i></a>
+                        <a href="https://www.behance.net/joovimizeesk" target="_blank"><i class="ph-behance-logo"></i></a>
+                        <a href="https://github.com/JvMizeeski" target="_blank"><i class="ph-github-logo"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"
+                style="text-align: center; color: var(--light-text); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; 2026 João Vitor Mizeeski.</p>
+            </div>
+        </div>
+        
+        <button id="back-to-top-btn" class="back-to-top-btn" title="Voltar ao topo">
+            <i class="ph-arrow-up"></i>
+        </button>
+    </footer>
+
+    <a href="https://wa.me/5548984591763?text=Olá%20João,%20vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20diagnóstico%20de%20UX/UI." class="whatsapp-float" target="_blank" title="Falar no WhatsApp">
+        <i class="ph-whatsapp-logo"></i>
+    </a>
+
+    <script>
+        // Script do Menu Mobile
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+        mobileNavToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+        });
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animações de Scroll
+            const sections = document.querySelectorAll('section');
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            sections.forEach(section => {
+                section.classList.add('fade-in-section');
+                observer.observe(section);
+            });
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top-btn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Dark/Light Theme Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const docHtml = document.documentElement;
+
+            function updateLogoSources(theme) {
+                const logos = document.querySelectorAll('#logo-carousel .logos-slide img');
+                logos.forEach(logo => {
+                    const darkSrc = logo.dataset.srcDark;
+                    const lightSrc = logo.dataset.srcLight;
+                    if (theme === 'light' && lightSrc) {
+                        logo.src = lightSrc;
+                        logo.style.filter = "none";
+                    } else if (darkSrc) {
+                        logo.src = darkSrc;
+                    }
+                });
+            }
+
+            function switchTheme() {
+                const currentTheme = docHtml.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                docHtml.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateLogoSources(newTheme);
+            }
+
+            themeToggle.addEventListener('change', switchTheme);
+
+            const savedTheme = localStorage.getItem('theme');
+            let initialTheme = 'dark';
+            if (savedTheme === 'light') {
+                docHtml.setAttribute('data-theme', 'light');
+                themeToggle.checked = false;
+                initialTheme = 'light';
+            } else {
+                docHtml.setAttribute('data-theme', 'dark');
+                themeToggle.checked = true;
+                initialTheme = 'dark';
+            }
+            updateLogoSources(initialTheme);
+        });
+    </script>
+</body>
+</html>
